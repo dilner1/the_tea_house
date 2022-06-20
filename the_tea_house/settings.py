@@ -27,9 +27,6 @@ SECRET_KEY = 'django-insecure-$r_$5vrp)00#q34=fqz23b_2(b+ick*n77t8n!%t^+q=ezxwv6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -79,6 +76,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'the_tea_house.wsgi.application'
 
+ALLOWED_HOSTS = ['the-tea-house-p5.herokuapp.com']
+
 AUTHENTICATION_BACKENDS = [
 
     'django.contrib.auth.backends.ModelBackend',
@@ -110,9 +109,8 @@ LOGIN_URL = '/accounts/login/'
 # }
 
 DATABASES = {
-   'default': dj_database_url.parse('postgres://pnzuwayfaxuigi:1074cf0328f9612b2c46b5f2c068915dad2d35cde5df9f599d74d9557e25f024@ec2-34-247-72-29.eu-west-1.compute.amazonaws.com:5432/ddul5klfa80lgp')
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
-
 
 
 # Password validation
