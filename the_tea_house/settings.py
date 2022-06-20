@@ -77,7 +77,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'the_tea_house.wsgi.application'
 
-ALLOWED_HOSTS = ['the-tea-house-p5.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', 'the-tea-house-p5.herokuapp.com']
 
 AUTHENTICATION_BACKENDS = [
 
