@@ -80,10 +80,7 @@ WSGI_APPLICATION = 'the_tea_house.wsgi.application'
 
 AUTHENTICATION_BACKENDS = [
 
-    # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
-
-    # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
@@ -104,12 +101,17 @@ LOGIN_URL = '/accounts/login/'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+   'default': dj_database_url.parse('postgres://pnzuwayfaxuigi:1074cf0328f9612b2c46b5f2c068915dad2d35cde5df9f599d74d9557e25f024@ec2-34-247-72-29.eu-west-1.compute.amazonaws.com:5432/ddul5klfa80lgp')
 }
+
 
 
 # Password validation
