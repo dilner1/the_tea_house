@@ -77,11 +77,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'the_tea_house.wsgi.application'
 
-if development:
-    ALLOWED_HOSTS = ['localhost', 'the-tea-house-p5.herokuapp.com']
-else:
-    ALLOWED_HOSTS = [os.environ.get('https://the-tea-house-p5.herokuapp.com/')]
-
+# if development:
+#     ALLOWED_HOSTS = ['localhost', 'the-tea-house-p5.herokuapp.com']
+# else:
+#     ALLOWED_HOSTS = [os.environ.get('https://the-tea-house-p5.herokuapp.com/')]
+ALLOWED_HOSTS = ['localhost', 'the-tea-house-p5.herokuapp.com']
     # add HEROKU_HOSTNAME
 
 
