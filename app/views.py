@@ -10,11 +10,11 @@ def teaStore(request):
 
 def potsStore(request):
     context = {}
-    return render(request, 'app/posts-store.html', context)
+    return render(request, 'app/pots-and-sets-store.html', context)
 
-def setsStore(request):
+def teawareStore(request):
     context = {}
-    return render(request, 'app/sets-store.html', context)
+    return render(request, 'app/teaware-store.html', context)
 
 def basket(request):
     context = {}
