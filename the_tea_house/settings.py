@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'cloudinary_storage'
+    'cloudinary_storage',
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'allauth',
@@ -83,7 +83,6 @@ WSGI_APPLICATION = 'the_tea_house.wsgi.application'
 # else:
 #     ALLOWED_HOSTS = [os.environ.get('https://the-tea-house-p5.herokuapp.com/')]
 ALLOWED_HOSTS = ['localhost', 'the-tea-house-p5.herokuapp.com']
-    # add HEROKU_HOSTNAME
 
 
 AUTHENTICATION_BACKENDS = [
@@ -168,6 +167,6 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 STATICFILES_DIRS = [(os.path.join(BASE_DIR,'static'))]
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
- 
+MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
