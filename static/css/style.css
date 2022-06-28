@@ -11,7 +11,11 @@
 }
 
 .home-banner {
-    /* background-color: rgb(107, 144, 128); */
-    margin: 0 auto;
     padding: 1rem;
+}
+
+.home-banner > img {
+    max-height: 400px;
+    background-position: center;
+    object-fit: cover;
 }
