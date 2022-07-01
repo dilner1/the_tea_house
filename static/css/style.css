@@ -19,3 +19,7 @@
     background-position: center;
     object-fit: cover;
 }
+
+.page-title {
+    text-align: center;
+}
