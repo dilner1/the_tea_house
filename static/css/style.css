@@ -1,4 +1,14 @@
-.gradient-custom {
+.home-banner {
+    padding: 1rem;
+}
+
+.home-banner>img {
+    max-height: 500px;
+    background-position: center;
+    object-fit: cover;
+}
+
+.gradient {
     /* fallback for older browsers */
     background: rgb(107, 144, 128);
 
@@ -10,15 +20,6 @@
     background: linear-gradient(to right, rgba(204, 227, 222, 1), rgba(234, 244, 244, 1))
 }
 
-.home-banner {
-    padding: 1rem;
-}
-
-.home-banner>img {
-    max-height: 500px;
-    background-position: center;
-    object-fit: cover;
-}
 
 .page-title {
     text-align: center;
