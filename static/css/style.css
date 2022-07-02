@@ -1,11 +1,5 @@
 /* Base css */
 
-.home-banner>img {
-    max-height: 500px;
-    background-position: center;
-    object-fit: cover;
-}
-
 .gradient {
     /* fallback for older browsers */
     background: rgb(107, 144, 128);
@@ -26,19 +20,16 @@
     font-size: 1.5rem;
 }
 
-/* Item cards */
-
-.card {
-    display: inline-block;
-    /* width: 18rem; */
+.dropdown-menu {
+  background-color: #f6fff8;
 }
 
-.card-img-top {
-    max-height: fit-content;
-    object-fit: cover;
-    max-height: 400px;
+/* Index page cards */
+.home-banner>img {
+  max-height: 500px;
+  background-position: center;
+  object-fit: cover;
 }
-
 
 /* Index page fade in effect */
 *, *:before, *:after{
@@ -61,8 +52,13 @@
   overflow: hidden;
 }
 
+.content-title > a {
+  text-decoration: none;
+  color:#ffffff;
+}
+
 .content .content-overlay {
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.5);
   position: absolute;
   height: 100%;
   width: 100%;

@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+<!-- Product cards -->
 <div class="container text-center">
   <h3 class="page-title">Our Products</h3>
   <div class="row">
@@ -11,7 +12,7 @@
         src="https://res.cloudinary.com/ddxxrzq7g/image/upload/v1656375214/pexels-yan-krukov-5480235_qhb8tg.jpg"
         class="img-responsive" alt="Image">
       <div class="content-details fadeIn-bottom">
-        <h3 class="content-title">Tea</h3>
+        <h3 class="content-title"><a href="{% url 'tea-store' %}">Tea</a></h3>
       </div>
     </div>
 
@@ -21,7 +22,7 @@
         src="https://res.cloudinary.com/ddxxrzq7g/image/upload/v1656375851/pexels-cottonbro-8037635_jjf3sg.jpg"
         class="img-responsive" alt="Image">
       <div class="content-details fadeIn-bottom">
-        <h3 class="content-title">Teapots, Sets and Cups</h3>
+        <h3 class="content-title"><a href="{% url 'pots-and-sets-store' %}">Pots and Sets</a></h3>
       </div>
     </div>
 
@@ -31,7 +32,7 @@
         src="https://res.cloudinary.com/ddxxrzq7g/image/upload/v1656372761/pexels-cup-of-couple-8474055_xysnnr.jpg"
         class="img-responsive" alt="Image">
       <div class="content-details fadeIn-bottom">
-        <h3 class="content-title">Teaware</h3>
+        <h3 class="content-title"><a href="{% url 'teaware-store' %}">Teaware</a></h3>
       </div>
     </div>
     <!-- <div class="col-sm-4 home-banner">
