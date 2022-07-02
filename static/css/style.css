@@ -27,3 +27,14 @@
 .basket-icon > i {
     font-size: 1.5rem;
 }
+
+/* Item cartd */
+
+.card {
+    display: inline-block;
+    width: 18rem;
+}
+
+.card-img-top {
+    max-height: fit-content;
+}
