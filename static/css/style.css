@@ -24,6 +24,10 @@
   background-color: #f6fff8;
 }
 
+.navbar a:hover {
+  border-bottom: 3px solid #6b9080;
+}
+
 /* Index page image links */
 
 .home-banner > img {
