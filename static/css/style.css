@@ -36,5 +36,7 @@
 }
 
 .card-img-top {
-    max-height: fit-content;
+    /* max-height: fit-content; */
+    object-fit: cover;
+    max-height: 400px;
 }
