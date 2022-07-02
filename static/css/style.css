@@ -24,11 +24,19 @@
   background-color: #f6fff8;
 }
 
-/* Index page cards */
-.home-banner>img {
+/* Index page image links */
+
+.home-banner > img {
   max-height: 500px;
   background-position: center;
   object-fit: cover;
+}
+
+/* Tea store cards */
+
+.card {
+    display: inline-block;
+    width: 18rem;
 }
 
 /* Index page fade in effect */
