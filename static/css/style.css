@@ -1,3 +1,5 @@
+/* Base css */
+
 .home-banner {
     padding: 1rem;
 }
@@ -28,7 +30,6 @@
 .basket-icon > i {
     font-size: 1.5rem;
 }
-
 
 /* Item cards */
 
@@ -86,10 +87,6 @@
   opacity: 1;
 }
 
-.content-image{
-  width: 100%;
-}
-
 .content-details {
   position: absolute;
   text-align: center;
@@ -107,7 +104,7 @@
   transition: all 0.3s ease-in-out 0s;
 }
 
-.content:hover .content-details{
+.content:hover .content-details {
   top: 50%;
   left: 50%;
   opacity: 1;
