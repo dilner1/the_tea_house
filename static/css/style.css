@@ -28,6 +28,10 @@
   color: #6b9080;
 }
 
+.dropdown-item:hover {
+  background-color: #cce3de;
+}
+
 /* Index page image links */
 
 .home-banner > img {
