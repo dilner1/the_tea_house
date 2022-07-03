@@ -25,7 +25,7 @@
 }
 
 .navbar a:hover {
-  border-bottom: 3px solid #6b9080;
+  color: #6b9080;
 }
 
 /* Index page image links */
