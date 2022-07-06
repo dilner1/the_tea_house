@@ -35,7 +35,17 @@ The colour palette was mixed using Coolers (https://coolors.co), the intetion wa
 # Credits
 
 ## Useful websites and tutorials:
+Meta Tags
 https://blog.hubspot.com/marketing/meta-tags
+
+Basket layout
+https://v1.mdbootstrap.com/docs/standard/extended/shopping-carts/#!
+
+Bootstrap cards
+https://getbootstrap.com/docs/4.0/components/card/
+
+Setting up Django
+https://www.youtube.com/watch?v=_ELCMngbM0E&list=LL&index=7&t=2101s&ab_channel=DennisIvy
 
 ## Bootstrap:
 

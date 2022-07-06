@@ -47,6 +47,12 @@
     width: 18rem;
 }
 
+/* Basket Store */
+
+.quantity-btn {
+  max-height: 3rem;
+}
+
 /* Index page fade in effect */
 *, *:before, *:after{
   margin: 0;
