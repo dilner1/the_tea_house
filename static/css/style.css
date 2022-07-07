@@ -134,6 +134,7 @@
 
 /* All Auth Cards */
 
-.auth-container {
-
+.auth-card {
+  display: inline-block;
+  border
 }
