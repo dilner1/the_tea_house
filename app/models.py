@@ -16,3 +16,10 @@ class Product(models.Model):
     
     def __str__(self):
         return self.name
+
+class Basket(models.Model):
+    userDetail = models.ForeignKey(UserDetail, on_delete=models.SET_NULL, blank=True, null=True)
+    order_number = models.CharField(max_length=30, null=False, editable=False)
+
+    def __str__(self):
+        return self.order_number
