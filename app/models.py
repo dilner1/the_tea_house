@@ -44,6 +44,8 @@ class DeliveryAddress(models.Model):
     phone_number = models.CharField(max_length=20, null=False, blank=False)
     info = models.TextField(null=True, blank=True)
 
+    def __str__(self):
+        return self.street_address1
     
     
     
