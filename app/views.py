@@ -6,16 +6,18 @@ def index(request):
     return render(request, 'app/index.html')
 
 def teaStore(request):
-    products = Product.object.all()
-    context = {}
+    products = Product.objects.all()
+    context = {'products':products}
     return render(request, 'app/tea-store.html', context)
 
 def potsStore(request):
-    context = {}
+    products = Product.object.all()
+    context = {'products':products}
     return render(request, 'app/pots-and-sets-store.html', context)
 
 def teawareStore(request):
-    context = {}
+    products = Product.object.all()
+    context = {'products':products}
     return render(request, 'app/teaware-store.html', context)
 
 def basket(request):
