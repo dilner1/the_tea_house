@@ -1,10 +1,12 @@
 from django.shortcuts import render
+from .models import *
 
 def index(request):
     """ Loads index page """
     return render(request, 'app/index.html')
 
 def teaStore(request):
+    products = Product.object.all()
     context = {}
     return render(request, 'app/tea-store.html', context)
 
