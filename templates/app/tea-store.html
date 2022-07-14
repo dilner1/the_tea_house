@@ -6,12 +6,12 @@
 <h3 class="page-title">Our Tea</h3>
 
 <div class="card">
-    <img class="card-img-top" src="" alt="Card image cap">
+    <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">{{ product.name }}</h5>
-      <p class="card-text">product info</p>
+      <p class="card-text">{{ product.info }}</p>
       <a href="#" class="btn btn-primary">Add to Basket</a>
-      <p class="d-inline pl-5">£ product price </p>
+      <p class="d-inline pl-5">£ {{ product.price|floatformat:2 }} </p>
     </div>
 </div>
 {% endfor %}
