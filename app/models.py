@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django_countries.fields import CountryField
 
-class UserDetails(models.Model):
+class UserDetail(models.Model):
     user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -21,7 +22,7 @@ class Basket(models.Model):
     userDetail = models.ForeignKey(UserDetail, on_delete=models.SET_NULL, blank=True, null=True)
     order_number = models.CharField(max_length=30, null=False, editable=False)
     order_date = models.DateTimeField(auto_now_add=True,)
-    completedOrder = models.BooleanField(default=False, Null=True, blank=False)
+    completedOrder = models.BooleanField(default=False, null=True, blank=False)
 
     def __str__(self):
         return str(self.order_number)
