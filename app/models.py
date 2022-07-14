@@ -2,6 +2,12 @@ from django.db import models
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
 
+class Categories(models.Model):
+    category = models.CharField(max_length=512)
+
+    def __str__(self):
+        return self.category
+
 class UserDetail(models.Model):
     user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
 
@@ -14,7 +20,7 @@ class Product(models.Model):
     price = models.FloatField()
     info = models.TextField()
     image = models.ImageField()
-    category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
+    category = models.ForeignKey('Categories', null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.name
@@ -28,7 +34,7 @@ class Basket(models.Model):
     def __str__(self):
         return str(self.order_number)
 
-class BasketOrderItem(models.Model):
+class BasketOrderItems(models.Model):
     item = models.ForeignKey(Product, on_delete=models.SET_NULL, blank=True, null=True)
     order = models.ForeignKey(Basket, on_delete=models.SET_NULL, blank=True, null=True)
     quantity = models.IntegerField(default=0, null=True, blank=True)
