@@ -29,7 +29,6 @@ development = os.environ.get('DEVELOPMENT', False)
 DEBUG = True
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -91,10 +90,13 @@ ALLOWED_HOSTS = ['localhost', 'the-tea-house-p5.herokuapp.com']
 
 
 AUTHENTICATION_BACKENDS = [
-
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
+
+# all auth forms
+ACCOUNT_FORMS = {'signup': 'app.forms.CustomSignupForm'}
+
 
 SITE_ID = 1
 
@@ -108,7 +110,6 @@ ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 2
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/accounts/login/'
-
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

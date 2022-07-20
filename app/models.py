@@ -10,10 +10,6 @@ class Categories(models.Model):
 
 class UserDetail(models.Model):
     user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
-    email = models.EmailField(null=True, blank=True)
-    f_name = models.CharField(max_length=30, null=True, blank=True)
-    l_name = models.CharField(max_length=30, null=True, blank=True)
-    default_phone_number = models.CharField(max_length=20, null=True, blank=True)
     def __str__(self):
         return self.user.name
 
