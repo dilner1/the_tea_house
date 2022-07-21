@@ -41,7 +41,7 @@
               <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                 <!-- Quantity Adjuster -->
                 <div class="container" >
-                  <h3 class="text-center" >{{ item.item.quantity }}</h3>
+                  <h3 class="text-center" >Quantity</h3>
                   <div class="d-flex mb-4">
                     <button class="btn btn-link px-3 me-2"
                       onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
@@ -63,7 +63,7 @@
                 <div class="container text-center">
                   <h4>Item total</h4>
                   <p class="text-start text-center">
-                    <strong>£{{ item.item.price }}</strong>
+                    <strong>£{{ basketitems.quantity  }}</strong>
                   </p>
                 </div>
                 <!-- Item Price -->

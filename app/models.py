@@ -35,6 +35,12 @@ class Basket(models.Model):
         total = sum([item.add_total for item in basketitems])
         return total
 
+    @property
+    def get_basket_items(self):
+        basketitems = self.basketitems_set.all()
+        total = sum([item.quantity for item in basketitems])
+        return total
+
 class BasketItems(models.Model):
     item = models.ForeignKey(Product, on_delete=models.SET_NULL, blank=True, null=True)
     order = models.ForeignKey(Basket, on_delete=models.SET_NULL, blank=True, null=True)
