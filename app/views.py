@@ -23,10 +23,12 @@ def teawareStore(request):
 def basket(request):
 
     if request.user.is_authenticated:
-        
-        items = BasketItems.item
+        customer = request.user
+        basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
+        items = basket.basketitems_set.all()
     else:
         items = []
+    
     context = {'items':items}
     return render(request, 'app/basket.html', context)
 
