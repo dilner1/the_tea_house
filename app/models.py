@@ -33,7 +33,7 @@ class BasketItems(models.Model):
     item = models.ForeignKey(Product, on_delete=models.SET_NULL, blank=True, null=True)
     order = models.ForeignKey(Basket, on_delete=models.SET_NULL, blank=True, null=True)
     quantity = models.IntegerField(default=0, null=True, blank=True)
-    added_date = models.DateTimeField(auto_now_add=True,)
+    added_date = models.DateTimeField(auto_now_add=True, max_length=150)
 
 class CustomerInfo(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
