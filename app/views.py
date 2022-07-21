@@ -21,7 +21,14 @@ def teawareStore(request):
     return render(request, 'app/teaware-store.html', context)
 
 def basket(request):
-    context = {}
+
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        # order, created = BasketItems.objects.get_or_create(customer=customer)
+        items = BasketItems.item
+    else:
+        items = []
+    context = {'items':items}
     return render(request, 'app/basket.html', context)
 
 def checkout(request):

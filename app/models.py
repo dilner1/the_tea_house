@@ -8,10 +8,11 @@ class Categories(models.Model):
     def __str__(self):
         return self.category
 
-# class UserShoppingID(models.Model):
-#     user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
-#     def __str__(self):
-#         return self.user.id
+class CustomerInfo(models.Model):
+    user = models.OneToOneField(User, on_delete=models.SET_NULL, blank=True, null=True)
+
+    def __str__(self):
+        return self.user.first_name
 
 class Product(models.Model):
     name = models.CharField(max_length=50, null=True)
@@ -25,7 +26,7 @@ class Product(models.Model):
         return self.name
 
 class Basket(models.Model):
-    user_detail = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
+    customer = models.ForeignKey(CustomerInfo, on_delete=models.SET_NULL, blank=True, null=True)
     order_number = models.CharField(max_length=30, null=False)
     order_date = models.DateTimeField(auto_now_add=True,)
     completedOrder = models.BooleanField(default=False, null=True, blank=False)
@@ -39,9 +40,9 @@ class BasketItems(models.Model):
     quantity = models.IntegerField(default=0, null=True, blank=True)
     added_date = models.DateTimeField(auto_now_add=True,)
 
-class DeliveryAddress(models.Model):
-    user_detail = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
-    order = models.ForeignKey(Basket, on_delete=models.SET_NULL, blank=True, null=True)
+class CustomerOrder(models.Model):
+    user = models.ForeignKey(CustomerInfo, on_delete=models.SET_NULL, blank=True, null=True)
+    customer_order = models.ForeignKey(Basket, on_delete=models.SET_NULL, blank=True, null=True)
     street_address1 = models.CharField(max_length=80, null=False, blank=False)
     street_address2 = models.CharField(max_length=80, null=True, blank=True)
     town_or_city = models.CharField(max_length=40, null=False, blank=False)
@@ -50,9 +51,3 @@ class DeliveryAddress(models.Model):
     postcode = models.CharField(max_length=20, null=True, blank=True)
     phone_number = models.CharField(max_length=20, null=False, blank=False)
     info = models.TextField(null=True, blank=True)
-
-    def __str__(self):
-        return self.street_address1
-    
-    
-    
