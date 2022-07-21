@@ -25,15 +25,15 @@
                 <!-- Image -->
                 <div class="bg-image">
                   <a href="#">
-                    <img
-                      src="" />
+                    <img class="card-img-top"
+                      src="{{ item.item.image.url }}" />
                   </a>
                 </div>
                 <!-- Image -->
               </div>
               <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
                 <!-- Item Info -->
-                <p><strong>Product Name</strong></p>
+                <p><strong>{{ item.item.name }}</strong></p>
                 <p></p>
                 <!-- Item Info -->
               </div>
@@ -41,7 +41,7 @@
               <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                 <!-- Quantity Adjuster -->
                 <div class="container" >
-                  <h3 class="text-center" >Quantity</h3>
+                  <h3 class="text-center" >{{ item.item.quantity }}</h3>
                   <div class="d-flex mb-4">
                     <button class="btn btn-link px-3 me-2"
                       onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
@@ -63,7 +63,7 @@
                 <div class="container text-center">
                   <h4>Item total</h4>
                   <p class="text-start text-center">
-                    <strong>$17.99</strong>
+                    <strong>£{{ item.item.price }}</strong>
                   </p>
                 </div>
                 <!-- Item Price -->
