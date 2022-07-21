@@ -29,11 +29,22 @@ class Basket(models.Model):
     def __str__(self):
         return str(self.id)
 
+    @property
+    def get_basket_total(self):
+        basketitems = self.basketitems_set.all()
+        total = sum([item.add_total for item in basketitems])
+        return total
+
 class BasketItems(models.Model):
     item = models.ForeignKey(Product, on_delete=models.SET_NULL, blank=True, null=True)
     order = models.ForeignKey(Basket, on_delete=models.SET_NULL, blank=True, null=True)
     quantity = models.IntegerField(default=0, null=True, blank=True)
     added_date = models.DateTimeField(auto_now_add=True, max_length=150)
+
+    @property
+    def add_total(self):
+        total = self.item.price * self.quantity
+        return total
 
 class CustomerInfo(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
