@@ -16,16 +16,17 @@
         <div class="card-body">
           <form>
             <!-- 2 column grid layout with text inputs for the first and last names -->
+            {% if user.is_authenticated %}
             <div class="row mb-4">
               <div class="col">
                 <div class="form-outline">
-                  <input type="text" id="form7Example1" class="form-control" />
+                  <input type="text" id="form7Example1" class="form-control" value="{{ user.first_name }}"/>
                   <label class="form-label" for="form7Example1">First name</label>
                 </div>
               </div>
               <div class="col">
                 <div class="form-outline">
-                  <input type="text" id="form7Example2" class="form-control" />
+                  <input type="text" id="form7Example2" class="form-control" value="{{ user.last_name }}"/>
                   <label class="form-label" for="form7Example2">Last name</label>
                 </div>
               </div>
@@ -41,8 +42,33 @@
 
             <!-- Text input -->
             <div class="form-outline mb-4">
-              <input type="text" id="form7Example4" class="form-control" />
-              <label class="form-label" for="form7Example4">Address</label>
+              <input type="text" id="form7Example4" class="form-control" value="{{ customer_info.street_address1 }}"/>
+              <label class="form-label" for="form7Example4">Address Line 1</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="text" id="form7Example4" class="form-control" value="{{ user.street_address2 }}"/>
+              <label class="form-label" for="form7Example4">Address Line 2</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="text" id="form7Example4" class="form-control" value="{{ user.town_or_city }}"/>
+              <label class="form-label" for="form7Example4">Town or City</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="text" id="form7Example4" class="form-control" value="{{ user.county }}"/>
+              <label class="form-label" for="form7Example4">County, province or state</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="text" id="form7Example4" class="form-control" value="{{ user.country }}"/>
+              <label class="form-label" for="form7Example4">Country</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="text" id="form7Example4" class="form-control" value="{{ user.postcode }}"/>
+              <label class="form-label" for="form7Example4">Post code</label>
             </div>
 
             <!-- Email input -->
@@ -53,7 +79,7 @@
 
             <!-- Number input -->
             <div class="form-outline mb-4">
-              <input type="number" id="form7Example6" class="form-control" />
+              <input type="number" id="form7Example6" class="form-control" value="{{ user.phone_number }}"/>
               <label class="form-label" for="form7Example6">Phone</label>
             </div>
             </div>
@@ -63,10 +89,82 @@
               <textarea class="form-control" id="form7Example7" rows="4"></textarea>
               <label class="form-label" for="form7Example7">Additional information</label>
             </div>
-            {% if user.is_authenticated %}
+
             <label class="form-check-label" for="id-save-info">Save my delivery information</label>
             <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
             {% else %}
+            <div class="row mb-4">
+              <div class="col">
+                <div class="form-outline">
+                  <input type="text" id="form7Example1" class="form-control"/>
+                  <label class="form-label" for="form7Example1">First name</label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-outline">
+                  <input type="text" id="form7Example2" class="form-control"/>
+                  <label class="form-label" for="form7Example2">Last name</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="container border pt-3 mb-3">
+              <h5 class="text-center" >Delivery Information</h5>
+              <!-- Text input -->
+            <div class="form-outline mb-4">
+              <input type="text" id="form7Example3" class="form-control" />
+              <label class="form-label" for="form7Example3">Company name</label>
+            </div>
+
+            <!-- Text input -->
+            <div class="form-outline mb-4">
+              <input type="text" id="form7Example4" class="form-control"/>
+              <label class="form-label" for="form7Example4">Address Line 1</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="text" id="form7Example4" class="form-control"/>
+              <label class="form-label" for="form7Example4">Address Line 2</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="text" id="form7Example4" class="form-control"/>
+              <label class="form-label" for="form7Example4">Town or City</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="text" id="form7Example4" class="form-control"/>
+              <label class="form-label" for="form7Example4">County, province or state</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="text" id="form7Example4" class="form-control"/>
+              <label class="form-label" for="form7Example4">Country</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="text" id="form7Example4" class="form-control"/>
+              <label class="form-label" for="form7Example4">Post code</label>
+            </div>
+
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <input type="email" id="form7Example5" class="form-control" />
+              <label class="form-label" for="form7Example5">Email</label>
+            </div>
+
+            <!-- Number input -->
+            <div class="form-outline mb-4">
+              <input type="number" id="form7Example6" class="form-control"/>
+              <label class="form-label" for="form7Example6">Phone</label>
+            </div>
+            </div>
+
+            <!-- Message input -->
+            <div class="form-outline mb-4">
+              <textarea class="form-control" id="form7Example7" rows="4"></textarea>
+              <label class="form-label" for="form7Example7">Additional information</label>
+            </div>
             <label class="form-check-label" for="id-save-info">
               <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or
               <a class="text-info" href="{% url 'account_login' %}">login</a>
@@ -80,7 +178,7 @@
                   <p class="mb-0">(including VAT)</p>
                 </strong>
               </div>
-              <span><strong>$12</strong></span>
+              <span><strong>£{{ basket.get_basket_total|floatformat:2 }}</strong></span>
             </li>
           </ul>
           <button type="button" class="btn btn-info btn-lg btn-block">

@@ -28,10 +28,20 @@ def basket(request):
         items = basket.basketitems_set.all()
     else:
         items = []
+        basket = {'get_basket_total': 0, 'get_basket_item': 0}
     
     context = {'items':items, 'basket':basket}
     return render(request, 'app/basket.html', context)
 
 def checkout(request):
-    context = {}
+    if request.user.is_authenticated:
+        customer = request.user.id
+        customer_info = CustomerInfo
+        basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
+        items = basket.basketitems_set.all()
+    else:
+        items = []
+        basket = {'get_basket_total': 0, 'get_basket_item': 0}
+    
+    context = {'items':items, 'basket':basket, 'customer_info':customer_info}
     return render(request, 'app/checkout.html', context)
