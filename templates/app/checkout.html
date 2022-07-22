@@ -36,7 +36,7 @@
               <h5 class="text-center" >Delivery Information</h5>
               <!-- Text input -->
             <div class="form-outline mb-4">
-              <input type="text" id="form7Example3" class="form-control" />
+              <input type="text" id="form7Example3" class="form-control" value="{{ customer_info.company }}"/>
               <label class="form-label" for="form7Example3">Company name</label>
             </div>
 
@@ -62,31 +62,31 @@
             </div>
 
             <div class="form-outline mb-4">
-              <input type="text" id="form7Example4" class="form-control" value="{{ user.country }}"/>
+              <input type="text" id="form7Example4" class="form-control" value="{{ customer_info.country }}"/>
               <label class="form-label" for="form7Example4">Country</label>
             </div>
 
             <div class="form-outline mb-4">
-              <input type="text" id="form7Example4" class="form-control" value="{{ user.postcode }}"/>
+              <input type="text" id="form7Example4" class="form-control" value="{{ customer_info.postcode }}"/>
               <label class="form-label" for="form7Example4">Post code</label>
             </div>
 
             <!-- Email input -->
             <div class="form-outline mb-4">
-              <input type="email" id="form7Example5" class="form-control" />
+              <input type="email" id="form7Example5" class="form-control" value="{{ user.email }}" />
               <label class="form-label" for="form7Example5">Email</label>
             </div>
 
             <!-- Number input -->
             <div class="form-outline mb-4">
-              <input type="number" id="form7Example6" class="form-control" value="{{ user.phone_number }}"/>
+              <input type="number" id="form7Example6" class="form-control" value="{{ customer_info.phone_number }}"/>
               <label class="form-label" for="form7Example6">Phone</label>
             </div>
             </div>
 
             <!-- Message input -->
             <div class="form-outline mb-4">
-              <textarea class="form-control" id="form7Example7" rows="4"></textarea>
+              <textarea class="form-control" id="form7Example7" rows="4" placeholder="{{ customer_info.info }}"></textarea>
               <label class="form-label" for="form7Example7">Additional information</label>
             </div>
 
