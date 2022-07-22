@@ -29,7 +29,7 @@ def basket(request):
     else:
         items = []
     
-    context = {'items':items}
+    context = {'items':items, 'basket':basket}
     return render(request, 'app/basket.html', context)
 
 def checkout(request):

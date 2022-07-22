@@ -63,7 +63,7 @@
                 <div class="container text-center">
                   <h4>Item total</h4>
                   <p class="text-start text-center">
-                    <strong>£{{ item.add_total }}</strong>
+                    <strong>£{{ item.add_total| floatformat:2 }}</strong>
                   </p>
                 </div>
                 <!-- Item Price -->
@@ -101,7 +101,9 @@
                     <p class="mb-0">(including VAT)</p>
                   </strong>
                 </div>
-                <span><strong>$12</strong></span>
+
+                <span><strong>£{{ basket.get_basket_total|floatformat:2 }}</strong></span>
+
               </li>
             </ul>
             <button type="button" class="btn btn-info btn-lg btn-block">

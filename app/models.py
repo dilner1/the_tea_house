@@ -30,15 +30,15 @@ class Basket(models.Model):
         return str(self.id)
 
     @property
-    def get_basket_total(self):
+    def get_basket_items(self):
         basketitems = self.basketitems_set.all()
         total = sum([item.add_total for item in basketitems])
         return total
 
     @property
-    def get_basket_items(self):
+    def get_basket_total(self):
         basketitems = self.basketitems_set.all()
-        total = sum([item.quantity for item in basketitems])
+        total = sum([item.add_total for item in basketitems])
         return total
 
 class BasketItems(models.Model):
