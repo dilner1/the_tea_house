@@ -6,18 +6,21 @@
 
 Existing Features:
 
-From the home page users are able to navigate to the store, this is seperated into three seperate categories being; Tea, Pots and Sets, Teaware. The user is able to navigate to this using the 3 cards or via the nav bar at the top of the page.
+From the home page users are able to navigate to the store, this is seperated into three seperate categories. The user is able to navigate to this using the 3 cards or via the nav bar at the top of the page.
 
 Users can also access the all auth features to register, sign in and out
 ![ Home Page feature]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658782523/P5%20Features/Screenshot_2022-07-25_at_22.31.33_irxhzr.png )
 
-There are three speperate 
+There are three speperate store pages, 'Tea', 'Pots and Sets' and 'Teaware'. This will allow users to narrow down their search as there could be far too many items for them to comfortably navigate.
 ![ Store feature]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658782522/P5%20Features/Screenshot_2022-07-25_at_22.31.49_vw9z4j.png )
 
+Allows users to store their planned purchases until they are ready to buy. 
 ![ Basket Feature ]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658782522/P5%20Features/Screenshot_2022-07-25_at_22.32.03_suqk6y.png )
 
+Checkout page allows users to pay for their items safely with Stripe.
 ![ Checkout feature ]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658782522/P5%20Features/Screenshot_2022-07-25_at_22.32.21_uclha2.png )
 
+All below pages are built with all auth, the only major changes are that the register page requires a first and last name, this will make the site seem more personal displaying your name. Crispy Forms was imported to create a cleaner look, text was also centered and placed inside a card. This is far more appealing than the standard layout of both all auth and Crispy Forms.
 ![ Sign in feature]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658782522/P5%20Features/Screenshot_2022-07-25_at_22.37.51_tewehn.png )
 
 ![ Sign out feature]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658782522/P5%20Features/Screenshot_2022-07-25_at_22.37.33_mizyam.png )
