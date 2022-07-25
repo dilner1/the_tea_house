@@ -31,8 +31,7 @@ All below pages are built with all auth, the only major changes are that the reg
 
 ## Planned Features
 
-Features planned in the future:
-
+Potential features to include would be a profile page with a list of previous purchases. This would allow users to easily find items they liked and add to the cart. Potentially could have a reminder button to send users an alert when their favourite tea is back in stock.
 
 # Design Stage
 
