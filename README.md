@@ -4,7 +4,32 @@
 
 ## Existing Features
 
+Existing Features:
+
+From the home page users are able to navigate to the store, this is seperated into three seperate categories being; Tea, Pots and Sets, Teaware. The user is able to navigate to this using the 3 cards or via the nav bar at the top of the page.
+
+Users can also access the all auth features to register, sign in and out
+![ Home Page feature]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658782523/P5%20Features/Screenshot_2022-07-25_at_22.31.33_irxhzr.png )
+
+There are three speperate 
+![ Store feature]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658782522/P5%20Features/Screenshot_2022-07-25_at_22.31.49_vw9z4j.png )
+
+![ Basket Feature ]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658782522/P5%20Features/Screenshot_2022-07-25_at_22.32.03_suqk6y.png )
+
+![ Checkout feature ]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658782522/P5%20Features/Screenshot_2022-07-25_at_22.32.21_uclha2.png )
+
+![ Sign in feature]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658782522/P5%20Features/Screenshot_2022-07-25_at_22.37.51_tewehn.png )
+
+![ Sign out feature]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658782522/P5%20Features/Screenshot_2022-07-25_at_22.37.33_mizyam.png )
+
+![ Register feature]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658782523/P5%20Features/Screenshot_2022-07-25_at_22.38.23_tnndbl.png )
+
+![ Password reset feature]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658782523/P5%20Features/Screenshot_2022-07-25_at_22.37.58_onmn1g.png )
+
 ## Planned Features
+
+Features planned in the future:
+
 
 # Design Stage
 
