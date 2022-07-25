@@ -8,6 +8,32 @@
 
 # Design Stage
 
+Home Page Desktop
+![ Home page ]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658778620/P5%20Design%20Stage/Screenshot_2022-07-25_at_21.23.41_eaew93.png )
+
+Store page Desktop
+![ Store Page Desktop ]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658778621/P5%20Design%20Stage/Screenshot_2022-07-25_at_21.24.13_njwrbc.png )
+
+Basket page Desktop
+![ Basket Page Dekstop ]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658778622/P5%20Design%20Stage/Screenshot_2022-07-25_at_21.25.43_jouvgn.png )
+
+Checkout page Desktop
+![ Checkout Page Desktop ]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658778622/P5%20Design%20Stage/Screenshot_2022-07-25_at_21.29.19_l0pzu6.png )
+
+---
+
+Home Page Mobile
+![ Home page Mobile ]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658778621/P5%20Design%20Stage/Screenshot_2022-07-25_at_21.23.56_qdjejs.png )
+
+Store page Mobile
+![ Store Page Mobile ]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658778621/P5%20Design%20Stage/Screenshot_2022-07-25_at_21.24.42_ur1xet.png )
+
+Basket page Mobile
+![ Basket Page mobile ]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658778622/P5%20Design%20Stage/Screenshot_2022-07-25_at_21.24.59_vcqf05.png )
+
+Checkout page Mobile
+![ Checkout Page Mobile ]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658778623/P5%20Design%20Stage/Screenshot_2022-07-25_at_21.31.05_ervvgo.png )
+
 ## Wireframes
 
 ## UX/UI
