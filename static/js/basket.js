@@ -1,5 +1,9 @@
-const btn = document.querySelector("add-to-basket-button");
+console.log('sup')
 
-btn.addEventListener("click", function () {
-    console.log('hello world')
-})
+let add_button = document.getElementById("add-to-basket-button")
+
+add_button.addEventListener("click", myFunction);
+
+function myFunction() {
+  alert ("Hello World!");
+}
