@@ -87,33 +87,34 @@ The colour palette was mixed using Coolers (https://coolors.co), the intetion wa
 
 # Deployment
 
-Create project in github
+Create Project in Github
  
 Open github
-Using the code institute template found click ‘Use this template’ button
-Choose a unique name
-Click ‘Create repository from template’ button
-The initial set up may take some time to load so just be patient
+- Using the code institute template found click ‘Use this template’ button
+- Choose a unique name
+- Click ‘Create repository from template’ button
+- The initial set up may take some time to load so just be patient
 
 https://github.com/Code-Institute-Org/gitpod-full-template
 
 
-install Django
+Install Django
 
-type the following command:
-pip install Django==4.0.5
+- type the following command:
+    pip install Django==4.0.5
 
-Once downloaded there should be a success message in the terminal
+- Once downloaded there should be a success message in the terminal
 
-Start Django Project in Github
+- Start Django Project in Github
 
-To start a new Django project type the following commend, there should be no spaces in the name of your project:
+- To start a new Django project type the following commend, there should be no spaces in the name of your project:
 
-django-admin startproject your_project_name .
+    django-admin startproject your_project_name . 
+- This dot at the end means the project will be created in the current directory
 
-the . at the end means the project will be created in the current directory
 
-look in the .gitignore file, it should contain the following already:
+**Look in the .gitignore file, it should contain the following already:**
+If not then download these and use the command pip3 freeze -- local > requirements.txt - this wil make sure we can run our site remotely by requiring the host to use these packages.
 
 core.Microsoft*
 core.mongo*
@@ -129,7 +130,8 @@ We also need to add a few things to this file:
 
 *.sqlite3 as this will ignore our development database file
 
-As we have added a new project we need to migrate the changes, we can do this by typing: 
+As we have added a new project we need to migrate the changes, we can do this by typing:
+pytho3 manage.py makemigrations 
 python3 manage.py migrate
 
 Create a super user
