@@ -69,9 +69,16 @@ Checkout page Mobile
 
 Similar to a previous project I created, [Garenden Gnome](https://github.com/dilner1/Garden_Gnome_Blog), the intended demographic is a wide age range and so it is key to keep a simple and straightforward design. Bold images, text and clear navigation are very important, with a simple account system. The site was deisigned mobile first as this is generally slightly less code intensive and generally an easier approach, so there was a focus from the beginign to make it useable on smaller screens with the adjusting drop down navigation.
 
-### Fonts = INCLUDE FONTS
+### Fonts
 
+Main Body Text: Lato
+This is a simple text selected for the main body as it is easy to read, is not too bold or distracting and so is ideal for conveying large sections of information or general text.
 
+Title / Header text: Uchen
+A serif text that stands out from the main body but also accompanies it well, this is used for hearders and other important sections to give some variety and emphasis.
+
+Accent text: Edu VIC WA NT Beginner
+This is rarely used but ads a third dynamic to text, userd simply to grab the users attention. As it is a more playful font the user understands it as non-serious and thus is not used for critical information.
 
 ### Colour Scheme & Styling
 

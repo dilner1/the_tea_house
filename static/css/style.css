@@ -1,5 +1,9 @@
 /* Base css */
 
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner:wght@400;500&family=Lato:ital,wght@0,300;1,400&family=Uchen&display=swap');
+
+/* Nav Bar Styling */
 .gradient {
     /* fallback for older browsers */
     background: rgb(107, 144, 128);
