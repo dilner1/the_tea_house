@@ -52,15 +52,19 @@ Checkout page Desktop
 ---
 
 Home Page Mobile
+<br/>
 ![ Home page Mobile ]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658778621/P5%20Design%20Stage/Screenshot_2022-07-25_at_21.23.56_qdjejs.png )
 
 Store page Mobile
+<br/>
 ![ Store Page Mobile ]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658778621/P5%20Design%20Stage/Screenshot_2022-07-25_at_21.24.42_ur1xet.png )
 
 Basket page Mobile
+<br/>
 ![ Basket Page mobile ]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658778622/P5%20Design%20Stage/Screenshot_2022-07-25_at_21.24.59_vcqf05.png )
 
 Checkout page Mobile
+<br/>
 ![ Checkout Page Mobile ]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658778623/P5%20Design%20Stage/Screenshot_2022-07-25_at_21.31.05_ervvgo.png )
 
 ## UX/UI
