@@ -1,5 +1,3 @@
-
-
 # Features
 
 ## Existing Features
@@ -8,16 +6,17 @@ Existing Features:
 
 From the home page users are able to navigate to the store, this is seperated into three seperate categories. The user is able to navigate to this using the 3 cards or via the nav bar at the top of the page. The mobile site was also designed to be bold and easy to use, but for quciker navigation the sticky nav bar has a drop down menu for easy access to any account settings or store pages.
 
-Users can also access the all auth features to register, sign in and out
+Users can also access the all auth features to register, sign in and out.
 ![ Home Page feature]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658782523/P5%20Features/Screenshot_2022-07-25_at_22.31.33_irxhzr.png )
 
 There are three speperate store pages, 'Tea', 'Pots and Sets' and 'Teaware'. This will allow users to narrow down their search as there could be far too many items for them to comfortably navigate.
 ![ Store feature]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658782522/P5%20Features/Screenshot_2022-07-25_at_22.31.49_vw9z4j.png )
 
-Allows users to store their planned purchases until they are ready to buy. 
+Allows users to store their planned purchases until they are ready to buy. User are able to adjust the quantity of items in the basket, this will also update the total cost before the user is ready to purchase items.
 ![ Basket Feature ]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658782522/P5%20Features/Screenshot_2022-07-25_at_22.32.03_suqk6y.png )
 
-Checkout page allows users to pay for their items safely with Stripe.
+Checkout page allows users to pay for their items safely with Stripe. The users delivery information can be inputted here,
+including email and telephone number.
 ![ Checkout feature ]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658782522/P5%20Features/Screenshot_2022-07-25_at_22.32.21_uclha2.png )
 
 All below pages are built with all auth, the only major changes are that the register page requires a first and last name, this will make the site seem more personal displaying your name. Crispy Forms was imported to create a cleaner look, text was also centered and placed inside a card. This is far more appealing than the standard layout of both all auth and Crispy Forms.
@@ -35,6 +34,7 @@ Potential features to include would be a profile page with a list of previous pu
 
 # Design Stage
 
+## Wireframes
 The layout was kept simple and easy to naviagte as there may be a wide range of customers wanting to use the site. Some may not be too familiar with a complicated layout. 
 
 Home Page Desktop
@@ -63,17 +63,20 @@ Basket page Mobile
 Checkout page Mobile
 ![ Checkout Page Mobile ]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658778623/P5%20Design%20Stage/Screenshot_2022-07-25_at_21.31.05_ervvgo.png )
 
-## Wireframes
-
 ## UX/UI
 
 ### Layout
 
-### Fonts
+Similar to a previous project I created, [Garenden Gnome](https://github.com/dilner1/Garden_Gnome_Blog), the intended demographic is a wide age range and so it is key to keep a simple and straightforward design. Bold images, text and clear navigation are very important, with a simple account system. The site was deisigned mobile first as this is generally slightly less code intensive and generally an easier approach, so there was a focus from the beginign to make it useable on smaller screens with the adjusting drop down navigation.
+
+### Fonts = INCLUDE FONTS
+
+
 
 ### Colour Scheme & Styling
 
-The colour palette was mixed using Coolers (https://coolors.co), the intetion was to use light and calming colours
+The colour palette was mixed using Coolers (https://coolors.co), the intetion was to use light and calming colours so 
+that the site is welcoming for users.
 
 - ![#6B9080](https://via.placeholder.com/15/6B9080/000000?text=+) `#6B9080`
 - ![#A4C3B2](https://via.placeholder.com/15/A4C3B2/000000?text=+) `#A4C3B2`
@@ -81,11 +84,13 @@ The colour palette was mixed using Coolers (https://coolors.co), the intetion wa
 - ![#EAF4F4](https://via.placeholder.com/15/EAF4F4/000000?text=+) `#EAF4F4`
 - ![#F6FFF8](https://via.placeholder.com/15/F6FFF8/000000?text=+) `#F6FFF8`
 
-## User Stories
+## User Stories.
 
-## Designing the Database Models
+![ User stories ]( https://res.cloudinary.com/ddxxrzq7g/image/upload/v1658872983/P5%20Design%20Stage/Milestone_Project_5_-_Sheet1_uvtorf.png )
 
-# Deployment
+## Designing the Database Models - CREATE DATABASE MODEL
+
+# Deployment -REWRITE
 
 Create Project in Github
  
@@ -347,26 +352,45 @@ pip3 freeze -- local > requirements.txt
 Meta Tags
 https://blog.hubspot.com/marketing/meta-tags
 
-Basket layout
-https://v1.mdbootstrap.com/docs/standard/extended/shopping-carts/#!
 
-Bootstrap cards
-https://getbootstrap.com/docs/4.0/components/card/
 
 Setting up Django
 https://www.youtube.com/watch?v=_ELCMngbM0E&list=LL&index=7&t=2101s&ab_channel=DennisIvy
 
 ## Bootstrap:
 
+Boostrap Documentation
+https://getbootstrap.com/docs/5.2/getting-started/introduction/
+
+Basket layout
+https://v1.mdbootstrap.com/docs/standard/extended/shopping-carts/#!
+
+Bootstrap cards
+https://getbootstrap.com/docs/4.0/components/card/
+
 ## Django Allauth
 
-## Technologies Used
+Django Documentation
+https://django-allauth.readthedocs.io/en/latest/
 
+## Technologies Used
 ### Languages
+HTML
+CSS
+Javascript
+Python
 
 ### Frameworks
+Django
+Bootstrap
+All Auth
 
 ### Hosting
+Cloudinary
+Heroku
+
+### Payment
+Stripe
 
 ### Downloaded Requirements
 
