@@ -4,15 +4,17 @@
 {% block content %}
 <h3 class="page-title">Our Tea Pots and Sets</h3>
 {% for product in products %}
-    <div class="card">
-        <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
-        <div class="card-body">
-        <h5 class="card-title">{{ product.name }}</h5>
-        <p class="card-text">{{ product.info }}</p>
-        <button class="btn btn-info" id="add-to-basket-button">Add to Basket</button>
-        <p class="d-inline pl-5">£ {{ product.price|floatformat:2 }} </p>
-        <P>{{ product.category }}</P>
-        </div>
+  {% if product.category.category == 'Pots and Sets' %}
+  <div class="card">
+    <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{ product.name }}</h5>
+      <p class="card-text">{{ product.info }}</p>
+      <button class="btn btn-info" id="add-to-basket-button">Add to Basket</button>
+      <p class="d-inline pl-5">£ {{ product.price|floatformat:2 }} </p>
+      <P>{{ product.category }}</P>
     </div>
+  </div>
+  {% endif %}
 {% endfor %}
 {% endblock %}

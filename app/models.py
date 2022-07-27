@@ -4,7 +4,7 @@ from django_countries.fields import CountryField
 from django.conf import settings
 
 class Categories(models.Model):
-    category = models.CharField(max_length=512)
+    category = models.CharField(max_length=30)
 
     def __str__(self):
         return self.category
