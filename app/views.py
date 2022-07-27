@@ -35,7 +35,7 @@ def basket(request):
 
 def checkout(request):
     if request.user.is_authenticated:
-        customer = request.user.id
+        customer = request.user
         customer_info = CustomerInfo.objects.get(user=customer)
         basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
         items = basket.basketitems_set.all()
