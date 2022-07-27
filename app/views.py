@@ -11,12 +11,12 @@ def teaStore(request):
     return render(request, 'app/tea-store.html', context)
 
 def potsStore(request):
-    products = Product.object.all()
+    products = Product.objects.all()
     context = {'products':products}
     return render(request, 'app/pots-and-sets-store.html', context)
 
 def teawareStore(request):
-    products = Product.object.all()
+    products = Product.objects.all()
     context = {'products':products}
     return render(request, 'app/teaware-store.html', context)
 
