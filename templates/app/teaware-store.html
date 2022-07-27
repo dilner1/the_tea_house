@@ -4,9 +4,6 @@
 {% block content %}
 <h3 class="page-title">Our Teaware</h3>
 {% for product in products %}
-    {% if product.category == Teaware %}
-
-
     <div class="card">
         <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
         <div class="card-body">
@@ -17,7 +14,5 @@
         <P>{{ product.category }}</P>
         </div>
     </div>
-
-    {% endif %}
 {% endfor %}
 {% endblock %}
