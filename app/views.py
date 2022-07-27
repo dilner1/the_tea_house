@@ -23,7 +23,7 @@ def teawareStore(request):
 def basket(request):
 
     if request.user.is_authenticated:
-        customer = request.user.id
+        customer = request.user
         basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
         items = basket.basketitems_set.all()
     else:
