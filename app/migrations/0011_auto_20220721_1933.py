@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='customerinfo',
             name='country',
-            field=django_countries.fields.CountryField(default='Country', max_length=2),
+            field=django_countries.fields.CountryField(default='Country'),
         ),
         migrations.AddField(
             model_name='customerinfo',
