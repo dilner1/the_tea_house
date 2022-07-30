@@ -170,6 +170,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
+CSRF_TRUSTED_ORIGINS = [ 'https://8000-dilner1-theteahouse-i3gm7djie9i.ws-eu54.gitpod.io'] 
+
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
