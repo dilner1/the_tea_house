@@ -364,7 +364,6 @@ Meta Tags
 https://blog.hubspot.com/marketing/meta-tags
 
 
-
 Setting up Django
 https://www.youtube.com/watch?v=_ELCMngbM0E&list=LL&index=7&t=2101s&ab_channel=DennisIvy
 

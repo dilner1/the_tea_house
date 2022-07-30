@@ -10,7 +10,7 @@
     <div class="card-body">
       <h5 class="card-title">{{ product.name }}</h5>
       <p class="card-text">{{ product.info }}</p>
-      <button class="btn btn-info" id="add-to-basket-button" data-product={{product.id}} data-action={{add}}>Add to Basket</button>
+      <button class="btn btn-info add-to-basket-button" data-product={{product.id}} data-action={{add}}>Add to Basket</button>
       <p class="d-inline pl-5">£ {{ product.price|floatformat:2 }} </p>
       <P>{{ product.category }}</P>
     </div>
