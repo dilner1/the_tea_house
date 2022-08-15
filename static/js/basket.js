@@ -2,8 +2,15 @@ let add_button = document.getElementsByClassName("add-to-basket-button")
 
 for (i = 0; i < add_button.length; i++) {
   add_button[i].addEventListener("click", function(){
-    let item_id = this.dataset.product
-    let add_item = this.dataset.action
-    console.log('item_id:', item_id, 'add_item:', add_item)
+    let itemId = this.dataset.product
+    let addItem = this.dataset.action
+    console.log('itemId:', itemId, 'addItem:', addItem)
+
+    if (user ===  'AnonymousUser'){
+      console.log('Not logged in')
+    }
+    else {
+      console.log('Request sent')
+    }
 });
 }
