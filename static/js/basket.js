@@ -6,6 +6,12 @@ for (i = 0; i < add_button.length; i++) {
     let addItem = this.dataset.action
 
     console.log('item Id:', itemId, 'Action:', addItem)
-    console.log(user)
+
+    if (user == 'AnonymousUser'){
+      console.log('You are not logged in')
+    } else {
+      console.log('You are logged in as', user)
+    }
+    
 });
 }
