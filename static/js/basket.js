@@ -27,8 +27,8 @@ function updateBasketItems(itemId, addItem){
     },
     body:JSON.stringify({'Item Id': itemId, 'Action': addItem})
   })
-  .then((respons => {
-    return.response.json();
+  .then((response => {
+    return response.json();
   })
   .then((data) => {
     console.log('Data:', data)
