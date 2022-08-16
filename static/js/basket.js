@@ -1,4 +1,4 @@
-let add_button = document.getElementsByClassName("add-to-basket-button")
+ let add_button = document.getElementsByClassName("add-to-basket-button")
 
 for (i = 0; i < add_button.length; i++) {
   add_button[i].addEventListener("click", function(){
@@ -15,8 +15,9 @@ for (i = 0; i < add_button.length; i++) {
 });
 }
 
+// function creates a promise, sending javascript data to the backend
 function updateBasketItems(itemId, addItem){
-  console.log('User is authenticate, adding to basket...')
+  console.log('User is authenticated, adding to basket...')
 
   let url = '/update-basket/'
 
@@ -24,14 +25,14 @@ function updateBasketItems(itemId, addItem){
     method:'POST',
     headers:{
       'Content-Type':'application/json',
+      'X-CSRFToken': csrftoken,
     },
-    body:JSON.stringify({'Item Id': itemId, 'Action': addItem})
+    body:JSON.stringify({'itemId': itemId, 'action': addItem})
   })
-  .then((response => {
+  .then((response) => {
     return response.json();
   })
   .then((data) => {
-    console.log('Data:', data)
-  })
-  )
+    console.log('data:', data)
+  });
 }
