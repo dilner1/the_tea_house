@@ -49,4 +49,16 @@ def checkout(request):
     return render(request, 'app/checkout.html', context)
 
 def updateBasket(request):
+
+    data = json.loads(request.body)
+    itemId = data['itemId']
+    action = data['addItem']
+
+    print('Item Id:', itemId)
+    print('Action:', action)
+
+    customer = request.user
+    item = Product.objects.get(id=itemId)
+    order, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
+
     return JsonResponse('Item added to basket', safe=False)

@@ -33,6 +33,6 @@ function updateBasketItems(itemId, addItem){
     return response.json();
   })
   .then((data) => {
-    console.log('data:', data)
+    location.reload()
   });
 }
