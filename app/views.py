@@ -49,3 +49,4 @@ def checkout(request):
     return render(request, 'app/checkout.html', context)
 
 def updateBasket(request):
+    return JsonResponse('Item added to basket', safe=False)
