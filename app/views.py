@@ -1,4 +1,6 @@
 from django.shortcuts import render
+
+from django.http import JsonResponse
 from .models import *
 
 def index(request):
@@ -45,3 +47,5 @@ def checkout(request):
     
     context = {'items':items, 'basket':basket, 'customer_info':customer_info}
     return render(request, 'app/checkout.html', context)
+
+def updateBasket(request):
