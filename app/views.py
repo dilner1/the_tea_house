@@ -61,4 +61,6 @@ def updateBasket(request):
     item = Product.objects.get(id=itemId)
     order, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
 
+    basketItem, created = BasketItems.objects.get_or_create(order=order, item=item)
+
     return JsonResponse('Item added to basket', safe=False)
