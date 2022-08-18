@@ -19,18 +19,47 @@ def index(request):
     return render(request, 'app/index.html', context)
 
 def teaStore(request):
+    if request.user.is_authenticated:
+        customer = request.user
+        basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
+        items = basket.basketitems_set.all()
+        allBasketItems = basket.get_basket_items
+    else:
+        items = []
+        basket = {'get_basket_total': 0, 'get_basket_items': 0}
+        allBasketItems = basket['get_basket_items']
     products = Product.objects.all()
-    context = {'products':products}
+    context = {'products':products, 'allBasketItems':allBasketItems}
+    allBasketItems = basket.get_basket_total
     return render(request, 'app/tea-store.html', context)
 
 def potsStore(request):
+    if request.user.is_authenticated:
+        customer = request.user
+        basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
+        items = basket.basketitems_set.all()
+        allBasketItems = basket.get_basket_items
+    else:
+        items = []
+        basket = {'get_basket_total': 0, 'get_basket_items': 0}
+        allBasketItems = basket['get_basket_items']
     products = Product.objects.all()
-    context = {'products':products}
+    context = {'products':products, 'allBasketItems':allBasketItems}
+    allBasketItems = basket.get_basket_total
     return render(request, 'app/pots-and-sets-store.html', context)
 
 def teawareStore(request):
+    if request.user.is_authenticated:
+        customer = request.user
+        basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
+        items = basket.basketitems_set.all()
+        allBasketItems = basket.get_basket_items
+    else:
+        items = []
+        basket = {'get_basket_total': 0, 'get_basket_items': 0}
+        allBasketItems = basket['get_basket_items']
     products = Product.objects.all()
-    context = {'products':products}
+    context = {'products':products, 'allBasketItems':allBasketItems}
     return render(request, 'app/teaware-store.html', context)
 
 def basket(request):
