@@ -5,7 +5,7 @@ for (i = 0; i < add_button.length; i++) {
     let itemId = this.dataset.product
     let addItem = this.dataset.action
 
-    console.log('Item Id:', itemId, 'Action:', addItem)
+    console.log('Item Id:', itemId, 'action:', addItem)
 
     if (user == 'AnonymousUser'){
       console.log('You are not logged in')
@@ -33,6 +33,7 @@ function updateBasketItems(itemId, addItem){
     return response.json();
   })
   .then((data) => {
-    location.reload()
+    console.log('data:', data)
+
   });
 }

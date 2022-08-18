@@ -1,6 +1,6 @@
 from django.shortcuts import render
-
 from django.http import JsonResponse
+import json
 from .models import *
 
 def index(request):
@@ -49,18 +49,11 @@ def checkout(request):
     return render(request, 'app/checkout.html', context)
 
 def updateBasket(request):
-
     data = json.loads(request.body)
     itemId = data['itemId']
-    action = data['addItem']
+    action = data['action']
 
     print('Item Id:', itemId)
     print('Action:', action)
-
-    customer = request.user
-    item = Product.objects.get(id=itemId)
-    order, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
-
-    basketItem, created = BasketItems.objects.get_or_create(order=order, item=item)
-
+    
     return JsonResponse('Item added to basket', safe=False)
