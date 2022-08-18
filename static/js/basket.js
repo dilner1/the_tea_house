@@ -34,6 +34,6 @@ function updateBasketItems(itemId, addItem){
   })
   .then((data) => {
     console.log('data:', data)
-
+    // location.reload()
   });
 }

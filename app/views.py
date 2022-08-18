@@ -28,11 +28,13 @@ def basket(request):
         customer = request.user
         basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
         items = basket.basketitems_set.all()
+        allBasketItems = basket.get_basket_item
     else:
         items = []
         basket = {'get_basket_total': 0, 'get_basket_item': 0}
+        allBasketItems = basket['get_basket_item']
     
-    context = {'items':items, 'basket':basket}
+    context = {'items':items, 'basket':basket, 'get_basket_item':get_basket_item}
     return render(request, 'app/basket.html', context)
 
 def checkout(request):
@@ -41,11 +43,13 @@ def checkout(request):
         customer_info = CustomerInfo.objects.get(user=customer)
         basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
         items = basket.basketitems_set.all()
+        allBasketItems = basket.get_basket_item
     else:
         items = []
         basket = {'get_basket_total': 0, 'get_basket_item': 0}
+        allBasketItems = basket['get_basket_item']
     
-    context = {'items':items, 'basket':basket, 'customer_info':customer_info}
+    context = {'items':items, 'basket':basket, 'customer_info':customer_info, 'get_basket_item':get_basket_item}
     return render(request, 'app/checkout.html', context)
 
 def updateBasket(request):
@@ -56,4 +60,21 @@ def updateBasket(request):
     print('Item Id:', itemId)
     print('Action:', action)
     
+
+    customer = request.user
+    item = Product.objects.get(id=itemId)
+    order, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
+
+    basketItem, created = BasketItems.objects.get_or_create(order=order, item=item)
+    
+    if action == 'add':
+        basketItem.quantity =  (basketItem.quantity + 1)
+    elif action == 'subtract':
+        basketItem.quantity =  (basketItem.quantity - 1)
+
+    basketItem.save()
+
+    if basketItem.quantity <= 0:
+        basketItem.delete()
+
     return JsonResponse('Item added to basket', safe=False)
