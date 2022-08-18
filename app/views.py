@@ -5,7 +5,18 @@ from .models import *
 
 def index(request):
     """ Loads index page """
-    return render(request, 'app/index.html')
+    if request.user.is_authenticated:
+        customer = request.user
+        basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
+        items = basket.basketitems_set.all()
+        allBasketItems = basket.get_basket_items
+    else:
+        items = []
+        basket = {'get_basket_total': 0, 'get_basket_items': 0}
+        allBasketItems = basket['get_basket_items']
+    
+    context = {'items':items, 'basket':basket, 'allBasketItems':allBasketItems}
+    return render(request, 'app/index.html', context)
 
 def teaStore(request):
     products = Product.objects.all()
@@ -28,13 +39,13 @@ def basket(request):
         customer = request.user
         basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
         items = basket.basketitems_set.all()
-        allBasketItems = basket.get_basket_item
+        allBasketItems = basket.get_basket_items
     else:
         items = []
-        basket = {'get_basket_total': 0, 'get_basket_item': 0}
-        allBasketItems = basket['get_basket_item']
+        basket = {'get_basket_total': 0, 'get_basket_items': 0}
+        allBasketItems = basket['get_basket_items']
     
-    context = {'items':items, 'basket':basket, 'get_basket_item':get_basket_item}
+    context = {'items':items, 'basket':basket, 'allBasketItems':allBasketItems}
     return render(request, 'app/basket.html', context)
 
 def checkout(request):
@@ -43,13 +54,13 @@ def checkout(request):
         customer_info = CustomerInfo.objects.get(user=customer)
         basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
         items = basket.basketitems_set.all()
-        allBasketItems = basket.get_basket_item
+        allBasketItems = basket.get_basket_total
     else:
         items = []
-        basket = {'get_basket_total': 0, 'get_basket_item': 0}
-        allBasketItems = basket['get_basket_item']
+        basket = {'get_basket_total': 0, 'get_basket_items': 0}
+        allBasketItems = basket['get_basket_items']
     
-    context = {'items':items, 'basket':basket, 'customer_info':customer_info, 'get_basket_item':get_basket_item}
+    context = {'items':items, 'basket':basket, 'customer_info':customer_info, 'allBasketItems':allBasketItems}
     return render(request, 'app/checkout.html', context)
 
 def updateBasket(request):
