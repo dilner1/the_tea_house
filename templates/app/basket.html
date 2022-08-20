@@ -43,18 +43,17 @@
                 <div class="container" >
                   <h3 class="text-center" >Quantity</h3>
                   <div class="d-flex mb-4">
-                    <button data-product={{item.product.id}} data-action="add" class="btn btn-link px-3 me-2"
-                      onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                      <i class="fas fa-minus"></i>
-                    </button>
+                    <button data-product={{item.item.id}} data-action="subtract" class="btn btn-link adjust-basket-button px-3 me-2"
+                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                    <i class="fas fa-minus"></i>
+                  </button>
 
-                    <div class="form-outline align-items-center m-auto">
-                      <input id="form1" min="0" name="quantity" value="{{item.quantity}}" type="number" class="form-control" />
-                    </div>
-                    <button data-product={{item.product.id}} data-action="subtract" class="btn btn-link px-3 ms-2"
-                      onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                      <i class="fas fa-plus"></i>
-                    </button>
+                  <div class="form-outline align-items-center m-auto">
+                    <input id="form1" min="0" name="quantity" value="{{item.quantity}}" type="number" class="form-control" />
+                  </div>
+                  <button data-product={{item.item.id}} data-action="add" class="btn btn-link adjust-basket-button px-3 ms-2"
+                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                    <i class="fas fa-plus"></i>
                   </div>
                 </div>
                 <!-- Quantity Adjuster -->
