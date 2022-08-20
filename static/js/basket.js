@@ -3,20 +3,20 @@
 for (i = 0; i < add_button.length; i++) {
   add_button[i].addEventListener("click", function(){
     let itemId = this.dataset.product
-    let addItem = this.dataset.action
+    let action = this.dataset.action
 
-    console.log('Item Id:', itemId, 'action:', addItem)
+    console.log('Item Id:', itemId, 'action:', action)
 
     if (user == 'AnonymousUser'){
       console.log('You are not logged in')
     } else {
-      updateBasketItems(itemId, addItem)
+      updateBasketItems(itemId, action)
     }
 });
 }
 
 // function creates a promise, sending javascript data to the backend
-function updateBasketItems(itemId, addItem){
+function updateBasketItems(itemId, action){
   console.log('User is authenticated, adding to basket...')
 
   let url = '/update-basket/'
@@ -27,13 +27,13 @@ function updateBasketItems(itemId, addItem){
       'Content-Type':'application/json',
       'X-CSRFToken': csrftoken,
     },
-    body:JSON.stringify({'itemId': itemId, 'action': addItem})
+    body:JSON.stringify({'itemId': itemId, 'action': action})
   })
   .then((response) => {
     return response.json();
   })
   .then((data) => {
     console.log('data:', data)
-    // location.reload()
+    location.reload()
   });
 }
