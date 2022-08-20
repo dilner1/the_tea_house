@@ -49,7 +49,7 @@
                     </button>
 
                     <div class="form-outline align-items-center m-auto">
-                      <input id="form1" min="0" name="quantity" value="1" type="number" class="form-control" />
+                      <input id="form1" min="0" name="quantity" value="{{item.quantity}}" type="number" class="form-control" />
                     </div>
                     <button data-product={{item.product.id}} data-action="subtract" class="btn btn-link px-3 ms-2"
                       onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
