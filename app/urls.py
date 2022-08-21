@@ -11,4 +11,5 @@ urlpatterns = [
     path('basket/', views.basket, name='basket'),
     path('checkout/', views.checkout, name='checkout'),
     path('update-basket/', views.updateBasket, name='update-basket'),
+    path('create-checkout-session/', views.createCheckoutSessionView.as_view(), name='create-checkout-session'),
     ]
