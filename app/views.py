@@ -1,5 +1,8 @@
 from django.shortcuts import render
+from django.views import View
 from django.http import JsonResponse
+from django.conf import settings
+import stripe
 import json
 from .models import *
 
@@ -119,19 +122,20 @@ def updateBasket(request):
 
     return JsonResponse('Item added to basket', safe=False)
 
+stripe.api_key = settings.STRIPE_SECRET_KEY
+
 # Stripe checkout
-@app.route('/create-checkout-session', methods=['POST'])
-def create_checkout_session():
-    try:
+class createCheckoutSessionView(View):
+    def post(self, request, *args, **kwargs):
         checkout_session = stripe.checkout.Session.create(
-            line_items=[
-                {
-                    # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                    'price': '{{PRICE_ID}}',
-                    'quantity': 1,
-                },
-            ],
-            mode='payment',
-            success_url=YOUR_DOMAIN + '/success.html',
-            cancel_url=YOUR_DOMAIN + '/cancel.html',
-        )
+        line_items=[
+            {
+                # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+                'price': '{{PRICE_ID}}',
+                'quantity': 1,
+            },
+        ],
+        mode='payment',
+        success_url=YOUR_DOMAIN + '/success.html',
+        cancel_url=YOUR_DOMAIN + '/cancel.html',
+    )
