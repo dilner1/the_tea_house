@@ -14,7 +14,7 @@
 
         </div>
         <div class="card-body product">
-          <form>
+          <form action="/create-checkout-session" method="POST">
             <!-- 2 column grid layout with text inputs for the first and last names -->
             {% if user.is_authenticated %}
             <div class="row mb-4">
@@ -181,12 +181,6 @@
               <span><strong>£{{ basket.get_basket_total|floatformat:2 }}</strong></span>
             </li>
           </ul>
-          <button type="button" class="btn btn-info btn-lg btn-block">
-            <a class="text-decoration-none text-reset" href="#">Confirm Payment</a>
-          </button>
-          <form action="/create-checkout-session" method="POST">
-            <button type="submit" id="checkout-button">Checkout</button>
-          </form>
         </div>
       </div>
       <div class="col-sm-2 col-lg-2">
