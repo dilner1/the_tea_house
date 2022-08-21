@@ -1,4 +1,4 @@
- let add_button = document.getElementsByClassName("adjust-basket-button")
+let add_button = document.getElementsByClassName("adjust-basket-button")
 
 for (i = 0; i < add_button.length; i++) {
   add_button[i].addEventListener("click", function(){
