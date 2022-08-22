@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views import View
+from django.views.generic import View, TemplateView
 from django.http import JsonResponse
 from django.conf import settings
 import stripe
@@ -137,13 +137,21 @@ class createCheckoutSessionView(View):
                 {
                     # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
                     'price': '{{basket.get_basket_total}}',
-                    'quantity': 1,
+                    'quantity': '{{allBasketItems}}',
                 },
             ],
             mode='payment',
-            success_url=YOUR_DOMAIN + '/success/',
-            cancel_url=YOUR_DOMAIN + '/cancel/',
+            success_url=YOUR_DOMAIN + 'app/success.html/',
+            cancel_url=YOUR_DOMAIN + 'app/cancel.html/',
         )
         return JsonResponse({
             'id': checkout_session.id
         })
+
+def successView(request):
+    context={}
+    return render(request, "app/success.html/", context)
+
+def cancelView(request):
+    context={}
+    return render(request, "app/cancel.html/", context)
