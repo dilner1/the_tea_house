@@ -168,7 +168,10 @@
             <label class="form-check-label" for="id-save-info">
               <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or
               <a class="text-info" href="{% url 'account_login' %}">login</a>
-            {% endif %}            
+            {% endif %}       
+            <div class="container">
+              <button type="submit" id="checkout-button" class="btn btn-info btn-lg btn-block">Pay</button>     
+            </div>
           </form>
           <ul class="list-group list-group-flush">
             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
