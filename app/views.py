@@ -6,6 +6,8 @@ import stripe
 import json
 from .models import *
 
+from flask import Flask, redirect, request
+
 def index(request):
     """ Loads index page """
     if request.user.is_authenticated:
@@ -125,6 +127,7 @@ def updateBasket(request):
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 # Stripe checkout
+
 class createCheckoutSessionView(View):
     def post(self, request, *args, **kwargs):
         YOUR_DOMAIN = 'localhost'
@@ -133,7 +136,7 @@ class createCheckoutSessionView(View):
             line_items=[
                 {
                     # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                    'price': '{{Product.objects.get(id=itemId)}}',
+                    'price': '{{basket.get_basket_total}}',
                     'quantity': 1,
                 },
             ],
