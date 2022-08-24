@@ -129,15 +129,26 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 # Stripe checkout
 
 class createCheckoutSessionView(View):
+
     def post(self, request, *args, **kwargs):
-        YOUR_DOMAIN = 'localhost'
+        YOUR_DOMAIN = 'https://8000-dilner1-theteahouse-r0583jkgofx.ws-eu62.gitpod.io/'
+
+        # product_id = self.kwargs("pk")
+        # print(product_id)
+        
         checkout_session = stripe.checkout.Session.create(
             payment_method_types = ['card'],
             line_items=[
                 {
                     # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                    'price': '{{basket.get_basket_total}}',
-                    'quantity': '{{allBasketItems}}',
+                    'price_data': {
+                        'currency': 'gbp',
+                        'unit_amount': product.price,
+                        'product_data':{
+                            'name': product.name,
+                        },
+                    },
+                    'quantity': 1,
                 },
             ],
             mode='payment',
