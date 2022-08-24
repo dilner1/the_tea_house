@@ -71,6 +71,14 @@
             <button class="btn btn-info" name="action_add" type="submit">{% trans "Add E-mail" %}</button>
           </form>
         </div>
+        <div class="col-sm-8 col-lg-8">
+          <form action="" method="post"></form>
+          {% csrf_token %}
+          {{ form|crispy }}
+
+
+          <button class="btn btn-info" type="submit">Verify Email</button>
+        </div>
       </div>
       <div class="col-sm-2 col-lg-2">
       </div>
@@ -78,7 +86,7 @@
         <button class="btn btn-info" name="action_add" onclick="window.location.href= url'account_change_password'">
           <a class="text-decoration-none text-reset" href="{% url 'account_change_password' %}">Change My Password</a>
         </button>
-    
+
       </div>
     </div>
   </div>
