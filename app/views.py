@@ -7,8 +7,6 @@ import json
 from .models import *
 from .forms import NewsletterSignupForm
 
-from flask import Flask, redirect, request
-
 def index(request):
     """ Loads index page """
     if request.user.is_authenticated:

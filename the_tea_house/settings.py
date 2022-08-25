@@ -182,7 +182,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-dilner1-theteahouse-r0583jkgofx.ws-eu63.gitpod.io'] 
+CSRF_TRUSTED_ORIGINS = ['https://8000-dilner1-theteahouse-6ov4syxdqzz.ws-eu63.gitpod.io'] 
 
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
@@ -196,4 +196,3 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 STRIPE_PUBLIC_KEY = ""
 STRIPE_SECRET_KEY = "sk_test_51Kz0ymB7IvVSIDeP2aEl7sCMC3dvS5TyXzk1L4kBXOkAb1eJ0OhDoHegp7bNKXAVmo0KIopNblg6kH6OWqBCpmZI00ltQ9GmcO"
 STRIPE_WEBHOOK_SECRET = ""
-APPEND_SLASH=False
