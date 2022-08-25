@@ -69,5 +69,5 @@ class NewsletterSignup(models.Model):
     email = models.EmailField()
     date_added = models.TimeField(auto_now_add=True)
 
-    def__str__(self):
+    def __str__(self):
         return self.email
