@@ -64,3 +64,10 @@ class CustomerInfo(models.Model):
     postcode = models.CharField(max_length=20, default='Post Code', null=True, blank=True)
     phone_number = models.CharField(max_length=20, default='Phone Number', null=False, blank=False)
     info = models.TextField(null=True, blank=True)
+
+class NewsletterSignup(models.Model):
+    email = models.EmailField()
+    date_added = models.TimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email

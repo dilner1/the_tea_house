@@ -51,6 +51,12 @@
     width: 18rem;
 }
 
+.card-text {
+  height: 4rem;
+  overflow-x:hidden;
+  white-space: nowrap;
+}
+
 /* Basket Store */
 
 .quantity-btn {

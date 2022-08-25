@@ -100,7 +100,19 @@ ACCOUNT_FORMS = {'signup': 'app.forms.CustomSignupForm'}
 
 SITE_ID = 1
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# email 
+if 'DEVELOPMENT' in os.environ:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    DEFAULT_FROM_EMAIL = 'https://the-tea-house-p5.herokuapp.com/'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_USE_TLS = True
+    EMAIL_PORT = 587
+    EMAIL_HOST = 'smtp@gmail.com'
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
+    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
+
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
@@ -170,9 +182,18 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
+CSRF_TRUSTED_ORIGINS = ['https://8000-dilner1-theteahouse-r0583jkgofx.ws-eu63.gitpod.io'] 
+
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# Stripe
+
+STRIPE_PUBLIC_KEY = ""
+STRIPE_SECRET_KEY = "sk_test_51Kz0ymB7IvVSIDeP2aEl7sCMC3dvS5TyXzk1L4kBXOkAb1eJ0OhDoHegp7bNKXAVmo0KIopNblg6kH6OWqBCpmZI00ltQ9GmcO"
+STRIPE_WEBHOOK_SECRET = ""
+APPEND_SLASH=False
