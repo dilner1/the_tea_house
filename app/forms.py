@@ -1,4 +1,5 @@
 from allauth.account.forms import SignupForm
+from .models import NewsletterSignup
 from django import forms
 
 class CustomSignupForm(SignupForm):
@@ -9,3 +10,12 @@ class CustomSignupForm(SignupForm):
         user.last_name = self.cleaned_data['last_name']
         user.save()
         return user
+
+class NewsletterSignupForm(forms.ModelForm):
+    class Meta:
+        model = NewsletterSignup
+        fields = ['email']
+    def cleanEmail(self):
+        email = self.cleaned_data.get()
+
+        return email

@@ -5,6 +5,7 @@ from django.conf import settings
 import stripe
 import json
 from .models import *
+from .forms import NewsletterSignupForm
 
 from flask import Flask, redirect, request
 
@@ -166,3 +167,27 @@ def successView(request):
 def cancelView(request):
     context={}
     return render(request, "app/cancel.html/", context)
+
+def NewsletterSignupView(request):
+    form = NewsletterSignupForm(request.Post or None)
+
+    if form.is_valid():
+        instance = form.save(commit=False)
+        if NewsletterSignup.object.filter(email=instance.email).exists():
+            print('Sorry this email is already sighned up to the news letter')
+        else:
+            instance.save()
+    context = {
+        'form': form,
+    }
+    template = '/workspace/the_tea_house/templates/allauth/account/email.html'
+    return render(request, context, template)
+
+    def newsletter_unsubscribe(request):
+        form = NewsletterSignupForm(request.Post or None)
+        if form.is_valid():
+        instance = form.save(commit=False)
+        if NewsletterSignup.object.filter(email=instance.email).exists():
+            NewsletterSignup.object.filter(email=instance.email).delete()
+        else:
+            print('This email is not subscribed to the newsletter')
