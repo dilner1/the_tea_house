@@ -9,9 +9,3 @@ class CustomSignupForm(SignupForm):
         user.last_name = self.cleaned_data['last_name']
         user.save()
         return user
-
-class confirmEmailForm(forms.Form):
-    first_name = forms.CharField(max_length=30, label='First Name')
-    last_name = forms.CharField(max_length=30, label='Last Name')
-    email = forms.EmailField()
-    

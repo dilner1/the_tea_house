@@ -167,11 +167,4 @@ def successView(request):
 def cancelView(request):
     context={}
     return render(request, "app/cancel.html/", context)
-
-# may need to add to urls.py
-def confirmRegistration(request):
-    customer = request.user
-    customer_info = CustomerInfo.objects.get_or_create(user=customer)
-    form = confirmEmailForm()
-    context = {'form': form, 'customer_info': customer_info,}
-    return render(request, "app/allauth//accounts/email.html/", context)
+    
