@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.views.generic import View, TemplateView
-from .forms import confirmEmailForm
 from django.http import JsonResponse
 from django.conf import settings
 import stripe
@@ -167,4 +166,3 @@ def successView(request):
 def cancelView(request):
     context={}
     return render(request, "app/cancel.html/", context)
-    
