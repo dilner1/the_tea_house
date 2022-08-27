@@ -1,0 +1,4 @@
+User-Agent: *
+Disallowed: /accounts/
+Disallowed: basket
+Sitemap: https://dilner1-theteahouse-6ov4syxdqzz.ws-eu63.gitpod.io/sitemap.xml
