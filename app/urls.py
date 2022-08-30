@@ -14,5 +14,5 @@ urlpatterns = [
     path('success/', views.successView, name='success'),
     path('cancel/', views.cancelView, name='cancel'),
     path('account/', views.NewsletterSignupView, name='account'),
-    path('account/', views.newsletterUnsubscribe, name='account'),
+    # path('account/', views.newsletterUnsubscribe, name='account'),
     ]

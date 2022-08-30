@@ -181,16 +181,16 @@ def NewsletterSignupView(request):
     template = 'account.html'
     return render(request, context, template)
 
-def newsletterUnsubscribe(request):
-    form = NewsletterSignupForm(request.Post or None)
-    if form.is_valid():
-        instance = form.save(commit=False)
-        if NewsletterSignup.object.filter(email=instance.email).exists():
-            NewsletterSignup.object.filter(email=instance.email).delete()
-        else:
-            print('This email is not subscribed to the newsletter')
-    context = {
-        'form': form,
-    }
-    template = 'account.html'
-    return render(request, context, template)
+# def newsletterUnsubscribe(request):
+#     form = NewsletterSignupForm(request.Post or None)
+#     if form.is_valid():
+#         instance = form.save(commit=False)
+#         if NewsletterSignup.object.filter(email=instance.email).exists():
+#             NewsletterSignup.object.filter(email=instance.email).delete()
+#         else:
+#             print('This email is not subscribed to the newsletter')
+#     context = {
+#         'form': form,
+#     }
+#     template = 'account.html'
+#     return render(request, context, template)
