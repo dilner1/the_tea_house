@@ -16,6 +16,6 @@ class NewsletterSignupForm(forms.ModelForm):
         model = NewsletterSignup
         fields = ['email']
     def cleanEmail(self):
-        email = self.cleaned_data.get()
+        email = self.cleaned_data.get('email')
 
         return email

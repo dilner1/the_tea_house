@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'the_tea_house.wsgi.application'
 #     ALLOWED_HOSTS = ['localhost', 'the-tea-house-p5.herokuapp.com']
 # else:
 #     ALLOWED_HOSTS = [os.environ.get('https://the-tea-house-p5.herokuapp.com/')]
-ALLOWED_HOSTS = ['localhost', 'the-tea-house-p5.herokuapp.com', 'https://validator.w3.org/']
+ALLOWED_HOSTS = ['localhost', 'the-tea-house-p5.herokuapp.com']
 
 
 AUTHENTICATION_BACKENDS = [
