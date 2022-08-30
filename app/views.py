@@ -178,7 +178,7 @@ def NewsletterSignupView(request):
     context = {
         'form': form,
     }
-    template = 'templates/allauth/account/email.html'
+    template = 'allauth/account/email.html'
     return render(request, context, template)
 
     def newsletter_unsubscribe(request):
@@ -192,5 +192,5 @@ def NewsletterSignupView(request):
         context = {
             'form': form,
         }
-        template = 'templates/allauth/account/email.html'
+        template = 'allauth/account/email.html'
         return render(request, context, template)
