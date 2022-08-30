@@ -167,19 +167,21 @@ def cancelView(request):
     return render(request, "app/cancel.html/", context)
 
 def NewsletterSignupView(request):
-    form = NewsletterSignupForm(request.Post or None)
+    # form = NewsletterSignupForm(request.Post or None)
 
-    if form.is_valid():
-        instance = form.save(commit=False)
-        if NewsletterSignup.object.filter(email=instance.email).exists():
-            print('Sorry this email is already sighned up to the news letter')
-        else:
-            instance.save()
-    context = {
-        'form': form,
-    }
-    template = 'account.html'
-    return render(request, context, template)
+    # if form.is_valid():
+    #     instance = form.save(commit=False)
+    #     if NewsletterSignup.object.filter(email=instance.email).exists():
+    #         print('Sorry this email is already sighned up to the news letter')
+    #     else:
+    #         instance.save()
+    # context = {
+    #     'form': form,
+    # }
+    # template = 'account.html'
+    # return render(request, context, 'app/my_account.html')
+    context = {}
+    return render(request, "app/my_account.html", context)
 
 # def newsletterUnsubscribe(request):
 #     form = NewsletterSignupForm(request.Post or None)
