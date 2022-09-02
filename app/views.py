@@ -172,7 +172,7 @@ def NewsletterSignupView(request):
     # if form.is_valid():
     #     instance = form.save(commit=False)
     #     if NewsletterSignup.object.filter(email=instance.email).exists():
-    #         print('Sorry this email is already sighned up to the news letter')
+    #         NewsletterSignup.object.filter(email=instance.email).delete()
     #     else:
     #         instance.save()
     # context = {
@@ -182,17 +182,3 @@ def NewsletterSignupView(request):
     # return render(request, context, 'app/my_account.html')
     context = {}
     return render(request, "app/my_account.html", context)
-
-# def newsletterUnsubscribe(request):
-#     form = NewsletterSignupForm(request.Post or None)
-#     if form.is_valid():
-#         instance = form.save(commit=False)
-#         if NewsletterSignup.object.filter(email=instance.email).exists():
-#             NewsletterSignup.object.filter(email=instance.email).delete()
-#         else:
-#             print('This email is not subscribed to the newsletter')
-#     context = {
-#         'form': form,
-#     }
-#     template = 'account.html'
-#     return render(request, context, template)
