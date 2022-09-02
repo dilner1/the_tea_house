@@ -17,8 +17,9 @@
             {% csrf_token %}
             <div class="input-group">
               {{ form }}
+              <input id="newsletteremail" type="newsletter" name="newsletteremail" value="{{ user.email }}">
             </div>
-            <button class="btn btn-info">Signup</button>
+            <button class="btn btn-info" type="submit">Signup</button>
         </div>
         </form>
       </div>
