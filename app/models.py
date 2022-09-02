@@ -68,7 +68,6 @@ class CustomerInfo(models.Model):
 class NewsletterSignup(models.Model):
     email = models.EmailField()
     date_added = models.TimeField(auto_now_add=True)
-    siged_up = models.BooleanField(default=False)
 
     def __str__(self):
         return self.email
