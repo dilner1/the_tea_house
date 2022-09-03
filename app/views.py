@@ -168,16 +168,16 @@ def cancelView(request):
 
 def NewsletterSignupView(request):
     form = NewsletterSignupForm(request.POST or None)
-
+    print('checking email address')
     if form.is_valid():
         instance = form.save(commit=False)
         if NewsletterSignup.object.filter(email=instance.email).exists():
+            print('removing email address')
             NewsletterSignup.object.filter(email=instance.email).delete()
         else:
             instance.save()
     context = {
         'form': form,
     }
-    template = 'account.html'
     context = {}
     return render(request, "app/my_account.html", context)
