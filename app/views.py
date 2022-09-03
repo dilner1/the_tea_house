@@ -171,13 +171,13 @@ def NewsletterSignupView(request):
     print('checking email address')
     if form.is_valid():
         instance = form.save(commit=False)
-        if NewsletterSignup.object.filter(email=instance.email).exists():
+        if NewsletterSignup.objects.filter(email=instance.email).exists():
             print('removing email address')
-            NewsletterSignup.object.filter(email=instance.email).delete()
+            NewsletterSignup.objects.filter(email=instance.email).delete()
         else:
             instance.save()
+
     context = {
         'form': form,
     }
-    context = {}
     return render(request, "app/my_account.html", context)

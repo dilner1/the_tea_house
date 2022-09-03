@@ -18,9 +18,9 @@
             {% csrf_token %}
             <div>
               {{ form|crispy }}
-              <input class="w-100" id="newsletteremail" type="newsletter" name="newsletteremail" value="{{ user.email }}">
             </div>
             <button class="btn btn-info mt-3" type="submit">Signup</button>
+            <p>{{ user.email }}</p>
         </div>
         </form>
       </div>
