@@ -34,6 +34,8 @@ CSRF verification failed. Request aborted.
 #### Newsletter email not appearing in admin once signed up
 1. When creating the newsletter signup the terminal messages gave a 200 response which means the post request should have worked however the email address did not appear in the admin.
 
+
+
 ### Unfixed bugs
 
 #### Basket does not show in account pages

@@ -167,7 +167,7 @@ def cancelView(request):
     return render(request, "app/cancel.html/", context)
 
 def NewsletterSignupView(request):
-    instance = NewsletterSignup.objects.filter(email=request.user.email).first()
+    instance = User.objects.filter(email=request.user.email).first()
     form = NewsletterSignupForm(request.POST or None, instance=instance)
     print('checking email address')
     if form.is_valid():
