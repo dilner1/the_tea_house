@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'crispy_forms',
     'django_countries',
+    'widget_tweaks',
     'app',
 ]
 
