@@ -132,11 +132,28 @@ class createCheckoutSessionView(View):
     def post(self, request, *args, **kwargs):
         YOUR_DOMAIN = 'https://8000-dilner1-theteahouse-r0583jkgofx.ws-eu62.gitpod.io/'
 
+    # pull basket items information 
+
         # product_id = self.kwargs("pk")
         # print(product_id)
-        
+        # stripeItems = [   {
+                    # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+                #     'price_data': {
+                #         'currency': 'gbp',
+                #         'unit_amount': product.price,
+                #         'product_data':{
+                #             'name': product.name,
+                #         },
+                #     },
+                #     'quantity': 1,
+                # },]
+        # try a for loop over product information from basket
+        # create list itmes object and push into line_items before sessioncreate
         checkout_session = stripe.checkout.Session.create(
             payment_method_types = ['card'],
+
+            # line_items = StripeItems
+
             line_items=[
                 {
                     # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
