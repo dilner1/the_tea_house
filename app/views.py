@@ -198,4 +198,3 @@ def NewsletterSignupView(request):
     context = {
         'form': form
     }
-    return render(request, "app/my_account.html", context)
