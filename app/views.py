@@ -84,7 +84,7 @@ def basket(request):
 def checkout(request):
     if request.user.is_authenticated:
         customer = request.user
-        # customer_info = CustomerInfo.objects.get_or_create(user=customer)
+        customer_info = CustomerInfo.objects.get_or_create(user=customer)
         basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
         items = basket.basketitems_set.all()
         allBasketItems = basket.get_basket_items
@@ -92,8 +92,8 @@ def checkout(request):
         items = []
         basket = {'get_basket_total': 0, 'get_basket_items': 0}
         allBasketItems = basket['get_basket_items']
-    # 'customer_info':customer_info MIGHT NEED TO ADD BACK LATER 'customer_info':customer_info
-    context = {'items':items, 'basket':basket, 'allBasketItems':allBasketItems}
+        customer_info = {}
+    context = {'items':items, 'basket':basket, 'customer_info':customer_info, 'allBasketItems':allBasketItems}
     return render(request, 'app/checkout.html', context)
 
 def updateBasket(request):
