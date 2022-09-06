@@ -179,6 +179,6 @@ def NewsletterSignupView(request):
             instance.save()
 
     context = {
-        'form': form,
+        'form': form
     }
     return render(request, "app/my_account.html", context)
