@@ -198,3 +198,7 @@ def NewsletterSignupView(request):
     context = {
         'form': form
     }
+
+def handler404(reques, exception):
+
+    return render(request, 'app/404.html/', status=404)
