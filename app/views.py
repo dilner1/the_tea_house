@@ -199,6 +199,6 @@ def NewsletterSignupView(request):
         'form': form
     }
 
-def handler404(reques, exception):
+def Error404View(request, exception):
 
-    return render(request, 'app/404.html/', status=404)
+    return render(request, 'app/404.html', status=404)
