@@ -34,7 +34,7 @@ def teaStore(request):
         allBasketItems = basket['get_basket_items']
     products = Product.objects.all()
     context = {'products':products, 'allBasketItems':allBasketItems}
-    allBasketItems = basket.get_basket_total
+
     return render(request, 'app/tea-store.html', context)
 
 def potsStore(request):
@@ -49,7 +49,7 @@ def potsStore(request):
         allBasketItems = basket['get_basket_items']
     products = Product.objects.all()
     context = {'products':products, 'allBasketItems':allBasketItems}
-    allBasketItems = basket.get_basket_total
+
     return render(request, 'app/pots-and-sets-store.html', context)
 
 def teawareStore(request):
@@ -92,7 +92,7 @@ def checkout(request):
         items = []
         basket = {'get_basket_total': 0, 'get_basket_items': 0}
         allBasketItems = basket['get_basket_items']
-    # 'customer_info':customer_info MIGHT NEED TO ADD BACK LATER
+        customer_info = {}
     context = {'items':items, 'basket':basket, 'customer_info':customer_info, 'allBasketItems':allBasketItems}
     return render(request, 'app/checkout.html', context)
 
@@ -132,11 +132,28 @@ class createCheckoutSessionView(View):
     def post(self, request, *args, **kwargs):
         YOUR_DOMAIN = 'https://8000-dilner1-theteahouse-r0583jkgofx.ws-eu62.gitpod.io/'
 
+    # pull basket items information 
+
         # product_id = self.kwargs("pk")
         # print(product_id)
-        
+        # stripeItems = [   {
+                    # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+                #     'price_data': {
+                #         'currency': 'gbp',
+                #         'unit_amount': product.price,
+                #         'product_data':{
+                #             'name': product.name,
+                #         },
+                #     },
+                #     'quantity': 1,
+                # },]
+        # try a for loop over product information from basket
+        # create list itmes object and push into line_items before sessioncreate
         checkout_session = stripe.checkout.Session.create(
             payment_method_types = ['card'],
+
+            # line_items = StripeItems
+
             line_items=[
                 {
                     # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
@@ -167,30 +184,21 @@ def cancelView(request):
     return render(request, "app/cancel.html/", context)
 
 def NewsletterSignupView(request):
-    form = NewsletterSignupForm(request.Post or None)
-
+    # instance = User.objects.filter(email=request.user.email).first()
+    form = NewsletterSignupForm(request.POST or None) # instance=instance
+    print('checking email address')
     if form.is_valid():
         instance = form.save(commit=False)
-        if NewsletterSignup.object.filter(email=instance.email).exists():
-            print('Sorry this email is already sighned up to the news letter')
+        if NewsletterSignup.objects.filter(email=instance.email).exists():
+            print('removing email address')
+            NewsletterSignup.objects.filter(email=instance.email).delete()
         else:
             instance.save()
-    context = {
-        'form': form,
-    }
-    template = '/workspace/the_tea_house/templates/allauth/account/email.html'
-    return render(request, context, template)
 
-    def newsletter_unsubscribe(request):
-        form = NewsletterSignupForm(request.Post or None)
-        if form.is_valid():
-            instance = form.save(commit=False)
-        if NewsletterSignup.object.filter(email=instance.email).exists():
-            NewsletterSignup.object.filter(email=instance.email).delete()
-        else:
-            print('This email is not subscribed to the newsletter')
-        context = {
-        'form': form,
+    context = {
+        'form': form
     }
-    template = '/workspace/the_tea_house/templates/allauth/account/email.html'
-    return render(request, context, template)
+
+def Error404View(request, exception):
+
+    return render(request, 'app/404.html', status=404)

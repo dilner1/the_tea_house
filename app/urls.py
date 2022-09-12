@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import handler404, handler500
 from . import views 
 
 urlpatterns = [
@@ -13,4 +14,7 @@ urlpatterns = [
     path('create-checkout-session/', views.createCheckoutSessionView.as_view(), name='create-checkout-session'),
     path('success/', views.successView, name='success'),
     path('cancel/', views.cancelView, name='cancel'),
+    path('my-account/', views.NewsletterSignupView, name='my-account'),
     ]
+
+handler404 = "app.views.Error404View"

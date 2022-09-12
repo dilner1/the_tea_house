@@ -3,7 +3,7 @@ from .models import *
 
 
 class NeswletterAdmin(admin.ModelAdmin):
-    list_display = ('email', 'date_added', )
+    list_display = ('email', 'date_added',)
 
 admin.site.register(Product)
 admin.site.register(Basket)

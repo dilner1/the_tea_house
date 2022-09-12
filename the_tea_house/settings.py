@@ -26,7 +26,7 @@ development = os.environ.get('DEVELOPMENT', False)
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # Application definition
 INSTALLED_APPS = [
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'crispy_forms',
     'django_countries',
+    'widget_tweaks',
     'app',
 ]
 
@@ -87,7 +88,7 @@ WSGI_APPLICATION = 'the_tea_house.wsgi.application'
 #     ALLOWED_HOSTS = ['localhost', 'the-tea-house-p5.herokuapp.com']
 # else:
 #     ALLOWED_HOSTS = [os.environ.get('https://the-tea-house-p5.herokuapp.com/')]
-ALLOWED_HOSTS = ['localhost', 'the-tea-house-p5.herokuapp.com', 'https://validator.w3.org/']
+ALLOWED_HOSTS = ['localhost', 'the-tea-house-p5.herokuapp.com']
 
 
 AUTHENTICATION_BACKENDS = [
@@ -183,7 +184,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-dilner1-theteahouse-6ov4syxdqzz.ws-eu63.gitpod.io'] 
+CSRF_TRUSTED_ORIGINS = ['https://8000-dilner1-theteahouse-6yr273yumzs.ws-eu63.gitpod.io'] 
 
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
@@ -194,6 +195,6 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Stripe
 
-STRIPE_PUBLIC_KEY = ""
+STRIPE_PUBLIC_KEY = "pk_test_51Kz0ymB7IvVSIDePssplUQzJPXoeo8xVVHgtkffF1g0SCe2ZL8Eu9bajY3FOl9gKRFyJ1HSwEZufxdL1lo7YFjD600ZWt0Dnzq"
 STRIPE_SECRET_KEY = "sk_test_51Kz0ymB7IvVSIDeP2aEl7sCMC3dvS5TyXzk1L4kBXOkAb1eJ0OhDoHegp7bNKXAVmo0KIopNblg6kH6OWqBCpmZI00ltQ9GmcO"
 STRIPE_WEBHOOK_SECRET = ""

@@ -15,7 +15,11 @@
       <div class="col-md-8">
         <div class="card-basket mb-4">
           <div class="card-header py-3">
-            <h5 class="mb-0">1 item</h5>
+            {% if allBasketItems == 1%}
+            <h5 class="mb-0">{{allBasketItems}} item</h5>
+            {% else %}
+            <h5 class="mb-0">{{allBasketItems}} items</h5>
+            {% endif %}
           </div>
           {% for item in items %}
           <div class="card-body">

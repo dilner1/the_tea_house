@@ -1,0 +1,44 @@
+{% extends 'app/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-2 col-lg-4 col-md-3">
+    </div>
+    <div class="col-sm-8 col-lg-4 col-md-6">
+      <div class="border">
+        <div class="card-header text-center">
+          <h1>{{ user.username }}</h1>
+        </div>
+        <div class="card-body text-center">
+          <p>Would you like to signup to our newsletter?</p>
+          <form action="" method="POST">
+            {% csrf_token %}
+            <div>
+              {{ form|crispy }}
+            </div>
+            {% if user.email in emails %}
+              <button class="btn btn-info mt-3" type="submit">Unsubscribe</button>
+            {% else %}
+              <button class="btn btn-info mt-3" type="submit">Signup</button>
+            {% endif %}
+            <p>{{ user.email }}</p>
+        </div>
+        </form>
+      </div>
+    </div>
+    <div class="container text-center pt-3">
+      <button class="btn btn-info" name="action_add" onclick="window.location.href= url'account_email'">
+        <a class="text-decoration-none text-reset" href="{% url 'account_email' %}">Change My Email</a>
+      </button>
+    </div>
+    <div class="container text-center pt-3">
+      <button class="btn btn-info" name="action_add" onclick="window.location.href= url'account_change_password'">
+        <a class="text-decoration-none text-reset" href="{% url 'account_change_password' %}">Change My Password</a>
+      </button>
+    </div>
+  </div>
+</div>
+{% endblock %}
