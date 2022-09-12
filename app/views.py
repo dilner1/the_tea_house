@@ -184,8 +184,8 @@ def cancelView(request):
     return render(request, "app/cancel.html/", context)
 
 def NewsletterSignupView(request):
-    # instance = User.objects.filter(email=request.user.email).first()
-    form = NewsletterSignupForm(request.POST or None) # instance=instance
+
+    form = NewsletterSignupForm(request.POST or None)
     print('checking email address')
     if form.is_valid():
         instance = form.save(commit=False)
@@ -198,6 +198,7 @@ def NewsletterSignupView(request):
     context = {
         'form': form
     }
+    return render(request, "app/my_account.html", context)
 
 def Error404View(request, exception):
 
