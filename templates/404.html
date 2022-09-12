@@ -3,7 +3,15 @@
 
 {% block content %}
 
-<p>Page not found</p>
+<div class="container text-center">
+    <p>Page not found</p>
+
+    <ul>
+        <li class="nav-item">
+            <a class="nav-link basket-icon" href="{% url 'home' %}">Return to home page</a>
+        </li>
+    </ul>
+</div>
 
 
 {% endblock %}
