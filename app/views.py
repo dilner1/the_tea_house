@@ -200,6 +200,5 @@ def NewsletterSignupView(request):
     }
     return render(request, "app/my_account.html", context)
 
-def Error404View(request, exception):
-
-    return render(request, 'app/404.html', status=404)
+def handler404View(request, exception):
+    return render(request, '404.html', status=404)

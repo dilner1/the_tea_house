@@ -17,4 +17,4 @@ urlpatterns = [
     path('my-account/', views.NewsletterSignupView, name='my-account'),
     ]
 
-handler404 = "app.views.Error404View"
+handler404 = "app.views.handler404View"
