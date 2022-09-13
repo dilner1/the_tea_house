@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import View, TemplateView
 from django.http import JsonResponse
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 import stripe
 import json
 from .models import *
@@ -19,9 +20,14 @@ def index(request):
         basket = {'get_basket_total': 0, 'get_basket_items': 0}
         allBasketItems = basket['get_basket_items']
     
-    context = {'items':items, 'basket':basket, 'allBasketItems':allBasketItems}
-    return render(request, 'app/index.html', context)
+    context = {
+        'items':items,
+        'basket':basket,
+        'allBasketItems':allBasketItems
+        }
+    return render(request, 'app/index.html', context) 
 
+# @login_required(login_url='/accounts/login/')
 def teaStore(request):
     if request.user.is_authenticated:
         customer = request.user
@@ -33,10 +39,14 @@ def teaStore(request):
         basket = {'get_basket_total': 0, 'get_basket_items': 0}
         allBasketItems = basket['get_basket_items']
     products = Product.objects.all()
-    context = {'products':products, 'allBasketItems':allBasketItems}
+    context = {
+        'products':products,
+        'allBasketItems':allBasketItems
+        }
 
     return render(request, 'app/tea-store.html', context)
 
+# @login_required(login_url='/accounts/login/')
 def potsStore(request):
     if request.user.is_authenticated:
         customer = request.user
@@ -48,10 +58,14 @@ def potsStore(request):
         basket = {'get_basket_total': 0, 'get_basket_items': 0}
         allBasketItems = basket['get_basket_items']
     products = Product.objects.all()
-    context = {'products':products, 'allBasketItems':allBasketItems}
+    context = {
+        'products':products,
+        'allBasketItems':allBasketItems
+        }
 
     return render(request, 'app/pots-and-sets-store.html', context)
 
+# @login_required(login_url='/accounts/login/')
 def teawareStore(request):
     if request.user.is_authenticated:
         customer = request.user
@@ -63,11 +77,14 @@ def teawareStore(request):
         basket = {'get_basket_total': 0, 'get_basket_items': 0}
         allBasketItems = basket['get_basket_items']
     products = Product.objects.all()
-    context = {'products':products, 'allBasketItems':allBasketItems}
+    context = {
+        'products':products,
+        'allBasketItems':allBasketItems
+        }
     return render(request, 'app/teaware-store.html', context)
 
+# @login_required(login_url='/accounts/login/')
 def basket(request):
-
     if request.user.is_authenticated:
         customer = request.user
         basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
@@ -78,23 +95,12 @@ def basket(request):
         basket = {'get_basket_total': 0, 'get_basket_items': 0}
         allBasketItems = basket['get_basket_items']
     
-    context = {'items':items, 'basket':basket, 'allBasketItems':allBasketItems}
+    context = {
+        'items':items,
+        'basket':basket,
+        'allBasketItems':allBasketItems
+        }
     return render(request, 'app/basket.html', context)
-
-def checkout(request):
-    if request.user.is_authenticated:
-        customer = request.user
-        customer_info = CustomerInfo.objects.get_or_create(user=customer)
-        basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
-        items = basket.basketitems_set.all()
-        allBasketItems = basket.get_basket_items
-    else:
-        items = []
-        basket = {'get_basket_total': 0, 'get_basket_items': 0}
-        allBasketItems = basket['get_basket_items']
-        customer_info = {}
-    context = {'items':items, 'basket':basket, 'customer_info':customer_info, 'allBasketItems':allBasketItems}
-    return render(request, 'app/checkout.html', context)
 
 def updateBasket(request):
     data = json.loads(request.body)
@@ -123,57 +129,82 @@ def updateBasket(request):
 
     return JsonResponse('Item added to basket', safe=False)
 
+# @login_required(login_url='/accounts/login/')
+def checkout(request):
+    if request.user.is_authenticated:
+        customer = request.user
+        customer_info = CustomerInfo.objects.get_or_create(user=customer)
+        basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
+        items = basket.basketitems_set.all()
+        allBasketItems = basket.get_basket_items
+    else:
+        items = []
+        basket = {'get_basket_total': 0, 'get_basket_items': 0}
+        allBasketItems = basket['get_basket_items']
+        customer_info = {}
+        # Code Institute uses a form to pass data rather than the basket
+    context = {
+        'items':items,
+        'basket':basket,
+        'customer_info':customer_info,
+        'allBasketItems':allBasketItems,
+        'stripe_public_key': 'pk_test_51Kz0ymB7IvVSIDePssplUQzJPXoeo8xVVHgtkffF1g0SCe2ZL8Eu9bajY3FOl9gKRFyJ1HSwEZufxdL1lo7YFjD600ZWt0Dnzq',
+        'client_secret': 'test client secret'
+        }
+    return render(request, 'app/checkout.html', context)
+
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 # Stripe checkout
 
 class createCheckoutSessionView(View):
 
-    def post(self, request, *args, **kwargs):
-        YOUR_DOMAIN = 'https://8000-dilner1-theteahouse-r0583jkgofx.ws-eu62.gitpod.io/'
+#     def post(self, request, *args, **kwargs):
+#         YOUR_DOMAIN = 'https://8000-dilner1-theteahouse-r0583jkgofx.ws-eu62.gitpod.io/'
 
-    # pull basket items information 
+#     # pull basket items information 
 
-        # product_id = self.kwargs("pk")
-        # print(product_id)
-        # stripeItems = [   {
-                    # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                #     'price_data': {
-                #         'currency': 'gbp',
-                #         'unit_amount': product.price,
-                #         'product_data':{
-                #             'name': product.name,
-                #         },
-                #     },
-                #     'quantity': 1,
-                # },]
-        # try a for loop over product information from basket
-        # create list itmes object and push into line_items before sessioncreate
-        checkout_session = stripe.checkout.Session.create(
-            payment_method_types = ['card'],
+#         # product_id = self.kwargs("pk")
+#         # print(product_id)
+#         # stripeItems = [   {
+#                     # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+#                 #     'price_data': {
+#                 #         'currency': 'gbp',
+#                 #         'unit_amount': product.price,
+#                 #         'product_data':{
+#                 #             'name': product.name,
+#                 #         },
+#                 #     },
+#                 #     'quantity': 1,
+#                 # },]
+#         # try a for loop over product information from basket
+#         # create list itmes object and push into line_items before sessioncreate
+#         checkout_session = stripe.checkout.Session.create(
+#             payment_method_types = ['card'],
 
-            # line_items = StripeItems
+#             # line_items = StripeItems
 
-            line_items=[
-                {
-                    # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                    'price_data': {
-                        'currency': 'gbp',
-                        'unit_amount': product.price,
-                        'product_data':{
-                            'name': product.name,
-                        },
-                    },
-                    'quantity': 1,
-                },
-            ],
-            mode='payment',
-            success_url=YOUR_DOMAIN + 'app/success.html/',
-            cancel_url=YOUR_DOMAIN + 'app/cancel.html/',
-        )
-        return JsonResponse({
-            'id': checkout_session.id
-        })
+#             line_items=[
+#                 {
+#                     # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+#                     'price_data': {
+#                         'currency': 'gbp',
+#                         'unit_amount': product.price,
+#                         'product_data':{
+#                             'name': product.name,
+#                         },
+#                     },
+#                     'quantity': 1,
+#                 },
+#             ],
+#             mode='payment',
+#             success_url=YOUR_DOMAIN + 'app/success.html/',
+#             cancel_url=YOUR_DOMAIN + 'app/cancel.html/',
+#         )
+#         return JsonResponse({
+#             'id': checkout_session.id
+#         })
+    print('hello')
 
 def successView(request):
     context={}
