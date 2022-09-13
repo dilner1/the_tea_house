@@ -224,6 +224,7 @@
   </div>
   {% endblock %}
 
+<!-- stripe js -->
   {% block postloadjs %}
     {{ block.super }}
     {{ stripe_public_key|json_script:"id_stripe_public_key" }}

@@ -153,9 +153,27 @@ def checkout(request):
         }
     return render(request, 'app/checkout.html', context)
 
-stripe.api_key = settings.STRIPE_SECRET_KEY
+def NewsletterSignupView(request):
 
-# Stripe checkout
+    form = NewsletterSignupForm(request.POST or None)
+    print('checking email address')
+    if form.is_valid():
+        instance = form.save(commit=False)
+        if NewsletterSignup.objects.filter(email=instance.email).exists():
+            print('removing email address')
+            NewsletterSignup.objects.filter(email=instance.email).delete()
+        else:
+            instance.save()
+
+    context = {
+        'form': form
+    }
+    return render(request, "app/my_account.html", context)
+
+def handler404View(request, exception):
+    return render(request, '404.html', status=404)
+
+stripe.api_key = settings.STRIPE_SECRET_KEY# Stripe checkout
 
 class createCheckoutSessionView(View):
 
@@ -213,23 +231,3 @@ def successView(request):
 def cancelView(request):
     context={}
     return render(request, "app/cancel.html/", context)
-
-def NewsletterSignupView(request):
-
-    form = NewsletterSignupForm(request.POST or None)
-    print('checking email address')
-    if form.is_valid():
-        instance = form.save(commit=False)
-        if NewsletterSignup.objects.filter(email=instance.email).exists():
-            print('removing email address')
-            NewsletterSignup.objects.filter(email=instance.email).delete()
-        else:
-            instance.save()
-
-    context = {
-        'form': form
-    }
-    return render(request, "app/my_account.html", context)
-
-def handler404View(request, exception):
-    return render(request, '404.html', status=404)
