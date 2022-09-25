@@ -27,7 +27,7 @@ def index(request):
         }
     return render(request, 'app/index.html', context) 
 
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def teaStore(request):
     if request.user.is_authenticated:
         customer = request.user
@@ -46,7 +46,7 @@ def teaStore(request):
 
     return render(request, 'app/tea-store.html', context)
 
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def potsStore(request):
     if request.user.is_authenticated:
         customer = request.user
@@ -65,7 +65,7 @@ def potsStore(request):
 
     return render(request, 'app/pots-and-sets-store.html', context)
 
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def teawareStore(request):
     if request.user.is_authenticated:
         customer = request.user
@@ -83,7 +83,7 @@ def teawareStore(request):
         }
     return render(request, 'app/teaware-store.html', context)
 
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def basket(request):
     if request.user.is_authenticated:
         customer = request.user
@@ -129,7 +129,7 @@ def updateBasket(request):
 
     return JsonResponse('Item added to basket', safe=False)
 
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def checkout(request):
     if request.user.is_authenticated:
         customer = request.user
