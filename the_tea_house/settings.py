@@ -26,7 +26,7 @@ development = os.environ.get('DEVELOPMENT', False)
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # Application definition
 INSTALLED_APPS = [
@@ -184,7 +184,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-dilner1-theteahouse-6yr273yumzs.ws-eu63.gitpod.io'] 
+CSRF_TRUSTED_ORIGINS = ['https://8000-dilner1-theteahouse-6yr273yumzs.ws-eu64.gitpod.io'] 
 
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'

@@ -1,0 +1,17 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container text-center mt-5">
+    <h1>Oops! Page not found</h1>
+
+    <ul>
+        <li class="nav-item list-unstyled">
+            <a class="nav-link" href="{% url 'home' %}">Return to home page</a>
+        </li>
+    </ul>
+</div>
+
+
+{% endblock %}

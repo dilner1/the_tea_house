@@ -174,10 +174,36 @@
             <label class="form-check-label" for="id-save-info">
               <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or
               <a class="text-info" href="{% url 'account_login' %}">login</a>
-            {% endif %}       
-            <div class="container">
-              <button type="submit" id="checkout-button" class="btn btn-info btn-lg btn-block">Pay</button>     
-            </div>
+            {% endif %}
+
+
+            <!-- Stripe card element -->
+            <fieldset class="px-3">
+              <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
+              <!-- A Stripe card element will go here -->
+              <div class="mb-3" id="card-element"></div>
+      
+              <!-- Used to display form errors -->
+              <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+          </fieldset>
+
+
+          <div class="submit-button text-right mt-5 mb-2">                    
+						<button id="submit-button" class="btn btn-black rounded-0">
+              <div class="container">
+                <button type="submit" id="checkout-button" class="btn btn-info btn-lg btn-block">Pay</button>     
+              </div>
+						</button>
+						<p class="small text-danger my-0">
+							<span class="icon">
+								<i class="fas fa-exclamation-circle"></i>
+							</span>
+							<strong>Your card will be charged</strong>
+						</p>
+					</div>
+
+
+
           </form>
           <ul class="list-group list-group-flush">
             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
@@ -196,4 +222,12 @@
       </div>
     </div>
   </div>
+  {% endblock %}
+
+<!-- stripe js -->
+  {% block postloadjs %}
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret" }}
+    <script src="{% static 'js/stripeElements.js' %}"></script>
   {% endblock %}
