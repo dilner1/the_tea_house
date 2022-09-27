@@ -158,53 +158,17 @@ def NewsletterSignupView(request):
 # Stripe checkout
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
-# class createCheckoutSessionView(View):
+class createCheckoutSessionView(View):
 
-#     def post(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
 
 
-#     # pull basket items information 
-
+    # pull basket items information
+    # try a for loop over product information from basket
+    # create list itmes object and push into line_items before sessioncreate
         
-#         stripeItems = [   {
-#                     # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-#                     'price_data': {
-#                         'currency': 'gbp',
-#                         'unit_amount': product.price,
-#                         'product_data':{
-#                             'name': product.name,
-#                         },
-#                     },
-#                     'quantity': 1,
-#                 },]
-#         # try a for loop over product information from basket
-#         # create list itmes object and push into line_items before sessioncreate
-#         checkout_session = stripe.checkout.Session.create(
-#             payment_method_types = ['card'],
 
-#             # line_items = StripeItems
-
-#             line_items=[
-#                 {
-#                     # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-#                     'price_data': {
-#                         'currency': 'gbp',
-#                         'unit_amount': product.price,
-#                         'product_data':{
-#                             'name': product.name,
-#                         },
-#                     },
-#                     'quantity': 1,
-#                 },
-#             ],
-#             mode='payment',
-#             success_url=YOUR_DOMAIN + 'app/success.html/',
-#             cancel_url=YOUR_DOMAIN + 'app/cancel.html/',
-#         )
-#         return JsonResponse({
-#             'id': checkout_session.id
-#         })
-#     print('hello')
+    print('hello')
 
 
 def successView(request):
