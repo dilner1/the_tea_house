@@ -22,18 +22,17 @@
           <form action="/create-checkout-session/" method="POST">
             {% csrf_token %}
             <!-- 2 column grid layout with text inputs for the first and last names -->
-            {% if user.is_authenticated %}
             <div class="row mb-4">
               <div class="col">
                 <div class="form-outline">
-                  <input type="text" id="form7Example1" class="form-control" value="{{ user.first_name }}"/>
-                  <label class="form-label" for="form7Example1">First name</label>
+                  <input type="text" class="form-control" value="{{ user.first_name }}"/>
+                  <label class="form-label">First name</label>
                 </div>
               </div>
               <div class="col">
                 <div class="form-outline">
-                  <input type="text" id="form7Example2" class="form-control" value="{{ user.last_name }}"/>
-                  <label class="form-label" for="form7Example2">Last name</label>
+                  <input type="text" class="form-control" value="{{ user.last_name }}"/>
+                  <label class="form-label" >Last name</label>
                 </div>
               </div>
             </div>
@@ -89,104 +88,12 @@
               <label class="form-label" for="form7Example6">Phone</label>
             </div>
             </div>
-
+            
             <!-- Message input -->
             <div class="form-outline mb-4">
               <textarea class="form-control" id="form7Example7" rows="4" placeholder="{{ customer_info.info }}"></textarea>
               <label class="form-label" for="form7Example7">Additional information</label>
             </div>
-
-            <label class="form-check-label" for="id-save-info">Save my delivery information</label>
-            <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
-            {% else %}
-            <div class="row mb-4">
-              <div class="col">
-                <div class="form-outline">
-                  <input type="text" id="form7Example1" class="form-control"/>
-                  <label class="form-label" for="form7Example1">First name</label>
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-outline">
-                  <input type="text" id="form7Example2" class="form-control"/>
-                  <label class="form-label" for="form7Example2">Last name</label>
-                </div>
-              </div>
-            </div>
-
-            <div class="container border pt-3 mb-3">
-              <h5 class="text-center" >Delivery Information</h5>
-              <!-- Text input -->
-            <div class="form-outline mb-4">
-              <input type="text" id="form7Example3" class="form-control" />
-              <label class="form-label" for="form7Example3">Company name</label>
-            </div>
-
-            <!-- Text input -->
-            <div class="form-outline mb-4">
-              <input type="text" id="form7Example4" class="form-control"/>
-              <label class="form-label" for="form7Example4">Address Line 1</label>
-            </div>
-
-            <div class="form-outline mb-4">
-              <input type="text" id="form7Example4" class="form-control"/>
-              <label class="form-label" for="form7Example4">Address Line 2</label>
-            </div>
-
-            <div class="form-outline mb-4">
-              <input type="text" id="form7Example4" class="form-control"/>
-              <label class="form-label" for="form7Example4">Town or City</label>
-            </div>
-
-            <div class="form-outline mb-4">
-              <input type="text" id="form7Example4" class="form-control"/>
-              <label class="form-label" for="form7Example4">County, province or state</label>
-            </div>
-
-            <div class="form-outline mb-4">
-              <input type="text" id="form7Example4" class="form-control"/>
-              <label class="form-label" for="form7Example4">Country</label>
-            </div>
-
-            <div class="form-outline mb-4">
-              <input type="text" id="form7Example4" class="form-control"/>
-              <label class="form-label" for="form7Example4">Post code</label>
-            </div>
-
-            <!-- Email input -->
-            <div class="form-outline mb-4">
-              <input type="email" id="form7Example5" class="form-control" />
-              <label class="form-label" for="form7Example5">Email</label>
-            </div>
-
-            <!-- Number input -->
-            <div class="form-outline mb-4">
-              <input type="number" id="form7Example6" class="form-control"/>
-              <label class="form-label" for="form7Example6">Phone</label>
-            </div>
-            </div>
-
-            <!-- Message input -->
-            <div class="form-outline mb-4">
-              <textarea class="form-control" id="form7Example7" rows="4"></textarea>
-              <label class="form-label" for="form7Example7">Additional information</label>
-            </div>
-            <label class="form-check-label" for="id-save-info">
-              <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or
-              <a class="text-info" href="{% url 'account_login' %}">login</a>
-            {% endif %}
-
-
-            <!-- Stripe card element -->
-            <fieldset class="px-3">
-              <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
-              <!-- A Stripe card element will go here -->
-              <div class="mb-3" id="card-element"></div>
-      
-              <!-- Used to display form errors -->
-              <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
-          </fieldset>
-
 
           <div class="submit-button text-right mt-5 mb-2">                    
 						<button id="submit-button" class="btn btn-black rounded-0">
@@ -225,9 +132,9 @@
   {% endblock %}
 
 <!-- stripe js -->
-  {% block postloadjs %}
+  <!-- {% block postloadjs %}
     {{ block.super }}
     {{ stripe_public_key|json_script:"id_stripe_public_key" }}
     {{ client_secret|json_script:"id_client_secret" }}
     <script src="{% static 'js/stripeElements.js' %}"></script>
-  {% endblock %}
+  {% endblock %} -->

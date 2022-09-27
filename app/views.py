@@ -29,15 +29,11 @@ def index(request):
 
 @login_required(login_url='/accounts/login/')
 def teaStore(request):
-    if request.user.is_authenticated:
-        customer = request.user
-        basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
-        items = basket.basketitems_set.all()
-        allBasketItems = basket.get_basket_items
-    else:
-        items = []
-        basket = {'get_basket_total': 0, 'get_basket_items': 0}
-        allBasketItems = basket['get_basket_items']
+    customer = request.user
+    basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
+    items = basket.basketitems_set.all()
+    allBasketItems = basket.get_basket_items
+
     products = Product.objects.all()
     context = {
         'products':products,
@@ -48,15 +44,12 @@ def teaStore(request):
 
 @login_required(login_url='/accounts/login/')
 def potsStore(request):
-    if request.user.is_authenticated:
-        customer = request.user
-        basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
-        items = basket.basketitems_set.all()
-        allBasketItems = basket.get_basket_items
-    else:
-        items = []
-        basket = {'get_basket_total': 0, 'get_basket_items': 0}
-        allBasketItems = basket['get_basket_items']
+
+    customer = request.user
+    basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
+    items = basket.basketitems_set.all()
+    allBasketItems = basket.get_basket_items
+
     products = Product.objects.all()
     context = {
         'products':products,
@@ -67,15 +60,11 @@ def potsStore(request):
 
 @login_required(login_url='/accounts/login/')
 def teawareStore(request):
-    if request.user.is_authenticated:
-        customer = request.user
-        basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
-        items = basket.basketitems_set.all()
-        allBasketItems = basket.get_basket_items
-    else:
-        items = []
-        basket = {'get_basket_total': 0, 'get_basket_items': 0}
-        allBasketItems = basket['get_basket_items']
+    customer = request.user
+    basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
+    items = basket.basketitems_set.all()
+    allBasketItems = basket.get_basket_items
+
     products = Product.objects.all()
     context = {
         'products':products,
@@ -85,15 +74,10 @@ def teawareStore(request):
 
 @login_required(login_url='/accounts/login/')
 def basket(request):
-    if request.user.is_authenticated:
-        customer = request.user
-        basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
-        items = basket.basketitems_set.all()
-        allBasketItems = basket.get_basket_items
-    else:
-        items = []
-        basket = {'get_basket_total': 0, 'get_basket_items': 0}
-        allBasketItems = basket['get_basket_items']
+    customer = request.user
+    basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
+    items = basket.basketitems_set.all()
+    allBasketItems = basket.get_basket_items
     
     context = {
         'items':items,
@@ -131,17 +115,12 @@ def updateBasket(request):
 
 @login_required(login_url='/accounts/login/')
 def checkout(request):
-    if request.user.is_authenticated:
-        customer = request.user
-        customer_info = CustomerInfo.objects.get_or_create(user=customer)
-        basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
-        items = basket.basketitems_set.all()
-        allBasketItems = basket.get_basket_items
-    else:
-        items = []
-        basket = {'get_basket_total': 0, 'get_basket_items': 0}
-        allBasketItems = basket['get_basket_items']
-        customer_info = {}
+    customer = request.user
+    customer_info = CustomerInfo.objects.get_or_create(user=customer)
+    basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
+    items = basket.basketitems_set.all()
+    allBasketItems = basket.get_basket_items
+
         # Code Institute uses a form to pass data rather than the basket
     context = {
         'items':items,
@@ -170,31 +149,34 @@ def NewsletterSignupView(request):
     }
     return render(request, "app/my_account.html", context)
 
-def handler404View(request, exception):
-    return render(request, '404.html', status=404)
 
-stripe.api_key = settings.STRIPE_SECRET_KEY# Stripe checkout
 
-class createCheckoutSessionView(View):
+
+
+
+
+# Stripe checkout
+stripe.api_key = settings.STRIPE_SECRET_KEY
+
+# class createCheckoutSessionView(View):
 
 #     def post(self, request, *args, **kwargs):
-#         YOUR_DOMAIN = 'https://8000-dilner1-theteahouse-r0583jkgofx.ws-eu62.gitpod.io/'
+
 
 #     # pull basket items information 
 
-#         # product_id = self.kwargs("pk")
-#         # print(product_id)
-#         # stripeItems = [   {
+        
+#         stripeItems = [   {
 #                     # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-#                 #     'price_data': {
-#                 #         'currency': 'gbp',
-#                 #         'unit_amount': product.price,
-#                 #         'product_data':{
-#                 #             'name': product.name,
-#                 #         },
-#                 #     },
-#                 #     'quantity': 1,
-#                 # },]
+#                     'price_data': {
+#                         'currency': 'gbp',
+#                         'unit_amount': product.price,
+#                         'product_data':{
+#                             'name': product.name,
+#                         },
+#                     },
+#                     'quantity': 1,
+#                 },]
 #         # try a for loop over product information from basket
 #         # create list itmes object and push into line_items before sessioncreate
 #         checkout_session = stripe.checkout.Session.create(
@@ -222,7 +204,8 @@ class createCheckoutSessionView(View):
 #         return JsonResponse({
 #             'id': checkout_session.id
 #         })
-    print('hello')
+#     print('hello')
+
 
 def successView(request):
     context={}
@@ -231,3 +214,6 @@ def successView(request):
 def cancelView(request):
     context={}
     return render(request, "app/cancel.html/", context)
+
+def handler404View(request, exception):
+    return render(request, '404.html', status=404)
