@@ -24,8 +24,7 @@ class NewsletterSignupForm(forms.ModelForm):
 class CustomerInfoForm(forms.ModelForm):
     class Meta:
         model = CustomerInfo
-        fields = ('company', 'street_address1','street_address2', 
-                    'street_address1','street_address2', 
-                    'town_or_city', 'county', 'country',
-                    'postcode', 'phone_number', 'info')
-
+        fields = "__all__"
+        widgets = {
+            'company': Textarea(attrs={'placeholder': 'Company'}),
+        }

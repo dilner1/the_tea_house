@@ -1,5 +1,6 @@
 {% extends 'app/base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 <div class="container mt-5">
@@ -21,7 +22,7 @@
         <div class="card-body product">
           <form action="{% url 'checkout' %}" method="POST">
             {% csrf_token %}
-            
+
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row mb-4">
               <div class="col">
@@ -41,16 +42,12 @@
             <div class="container border pt-3 mb-3">
               <h5 class="text-center" >Delivery Information</h5>
               <!-- Text input -->
-            <div class="form-outline mb-4">
-              <input type="text" class="form-control" value="{{ customer_info.company }}"/>
-              <label class="form-label">Company name</label>
-            </div>
 
-            <!-- Text input -->
-            <div class="form-outline mb-4">
-              <input type="text" class="form-control" value="{{ customer_info.street_address1 }}"/>
-              <label class="form-label">Address Line 1</label>
-            </div>
+            <fieldset class="rounded px-3 mb-5">
+              <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
+              {{ CustomerInfoForm.company | as_crispy_field }}
+              <!-- {{ order_form.street_address1 | as_crispy_field }} -->
+            </fieldset>
 
             <div class="form-outline mb-4">
               <input type="text" class="form-control" value="{{ customer_info.street_address2 }}"/>
