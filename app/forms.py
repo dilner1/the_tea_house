@@ -28,3 +28,4 @@ class CustomerInfoForm(forms.ModelForm):
                     'street_address1','street_address2', 
                     'town_or_city', 'county', 'country',
                     'postcode', 'phone_number', 'info')
+

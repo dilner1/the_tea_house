@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 import stripe
 import json
 from .models import *
-from .forms import NewsletterSignupForm
+from .forms import *
 
 def index(request):
     """ Loads index page """
@@ -115,6 +115,7 @@ def updateBasket(request):
 
 @login_required(login_url='/accounts/login/')
 def checkout(request):
+    customer_form = CustomerInfoForm()
     customer = request.user
     customer_info = CustomerInfo.objects.get_or_create(user=customer)
     basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
@@ -128,7 +129,8 @@ def checkout(request):
         'customer_info':customer_info,
         'allBasketItems':allBasketItems,
         'stripe_public_key': 'pk_test_51Kz0ymB7IvVSIDePssplUQzJPXoeo8xVVHgtkffF1g0SCe2ZL8Eu9bajY3FOl9gKRFyJ1HSwEZufxdL1lo7YFjD600ZWt0Dnzq',
-        'client_secret': 'test client secret'
+        'client_secret': 'test client secret',
+        'customer_form': 'customer_form'
         }
     return render(request, 'app/checkout.html', context)
 
@@ -158,17 +160,6 @@ def NewsletterSignupView(request):
 # Stripe checkout
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
-class createCheckoutSessionView(View):
-
-    def post(self, request, *args, **kwargs):
-
-
-    # pull basket items information
-    # try a for loop over product information from basket
-    # create list itmes object and push into line_items before sessioncreate
-        
-
-    print('hello')
 
 
 def successView(request):
