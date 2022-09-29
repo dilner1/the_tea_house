@@ -1,6 +1,7 @@
 from allauth.account.forms import SignupForm
 from .models import NewsletterSignup, CustomerInfo
 from django import forms
+from django.forms import ModelForm, Textarea
 
 class CustomSignupForm(SignupForm):
     first_name = forms.CharField(max_length=30, label='First Name')
@@ -25,6 +26,3 @@ class CustomerInfoForm(forms.ModelForm):
     class Meta:
         model = CustomerInfo
         fields = "__all__"
-        widgets = {
-            'company': Textarea(attrs={'placeholder': 'Company'}),
-        }
