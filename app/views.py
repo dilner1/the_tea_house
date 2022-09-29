@@ -115,22 +115,25 @@ def updateBasket(request):
 
 @login_required(login_url='/accounts/login/')
 def checkout(request):
-    customer_info = CustomerInfoForm(request.POST or None)
-    if customer_info.is_valid():
-        customer_info.save()
+
+    form = CustomerInfoForm()
+    
+    if request.method == 'POST':
+        form = CustomerInfoForm(request.POST)
+        if form.is_valid():
+            form.save
 
     customer = request.user
-    customer_info = CustomerInfo.objects.get_or_create(user=customer)
+    form = CustomerInfo.objects.get_or_create(user=customer)
     basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
     items = basket.basketitems_set.all()
     allBasketItems = basket.get_basket_items
 
-        # Code Institute uses a form to pass data rather than the basket
     context = {
-        'items':items,
-        'basket':basket,
-        'customer_info':customer_info,
-        'allBasketItems':allBasketItems,
+        'items': items,
+        'basket': basket,
+        'form': form,
+        'allBasketItems': allBasketItems,
         'stripe_public_key': 'pk_test_51Kz0ymB7IvVSIDePssplUQzJPXoeo8xVVHgtkffF1g0SCe2ZL8Eu9bajY3FOl9gKRFyJ1HSwEZufxdL1lo7YFjD600ZWt0Dnzq',
         'client_secret': 'test client secret',
         }
