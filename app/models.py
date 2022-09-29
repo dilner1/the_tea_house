@@ -64,6 +64,9 @@ class CustomerInfo(models.Model):
     phone_number = models.CharField(max_length=20, null=False, blank=False)
     info = models.TextField(null=True, blank=True)
 
+    def __str__(self):
+        return str(self.postcode)
+
 class NewsletterSignup(models.Model):
     email = models.EmailField()
     date_added = models.TimeField(auto_now_add=True)

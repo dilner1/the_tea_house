@@ -22,9 +22,6 @@
         <div class="card-body product">
           <form action="{% url 'checkout' %}" method="POST">
             {% csrf_token %}
-            {{ form }}
-
-            <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row mb-4">
               <div class="col">
                 <div class="form-outline">
@@ -39,7 +36,7 @@
                 </div>
               </div>
             </div>
-
+            {{ form }}
 
 
           <div class="submit-button text-right mt-5 mb-2">                    
