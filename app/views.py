@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.views.generic import View, TemplateView
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+
+from django.urls import reverse
+
 import stripe
 import json
 from .models import *
@@ -124,6 +127,7 @@ def checkout(request):
         form = CustomerInfoForm(request.POST)
         if form.is_valid():
             form.save
+            return HttpResponseRedirect(reverse('success'))
     basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
     items = basket.basketitems_set.all()
     allBasketItems = basket.get_basket_items
