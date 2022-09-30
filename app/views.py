@@ -116,15 +116,14 @@ def updateBasket(request):
 @login_required(login_url='/accounts/login/')
 def checkout(request):
 
+
+    customer = request.user
     form = CustomerInfoForm()
     
     if request.method == 'POST':
         form = CustomerInfoForm(request.POST)
         if form.is_valid():
             form.save
-
-    customer = request.user
-    form = CustomerInfo.objects.get_or_create(user=customer)
     basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
     items = basket.basketitems_set.all()
     allBasketItems = basket.get_basket_items

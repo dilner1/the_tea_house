@@ -22,7 +22,7 @@ class NewsletterSignupForm(forms.ModelForm):
 
             return email
 
-class CustomerInfoForm(forms.ModelForm):
+class CustomerInfoForm(ModelForm):
     class Meta:
         model = CustomerInfo
         fields = [
