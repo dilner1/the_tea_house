@@ -116,22 +116,24 @@ def updateBasket(request):
 
     return JsonResponse('Item added to basket', safe=False)
 
+
 @login_required(login_url='/accounts/login/')
 def checkout(request):
-
-
     customer = request.user
     form = CustomerInfoForm()
-    
-    if request.method == 'POST':
-        form = CustomerInfoForm(request.POST)
-        if form.is_valid():
-            form.save
-            return HttpResponseRedirect(reverse('success'))
     basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
     items = basket.basketitems_set.all()
     allBasketItems = basket.get_basket_items
 
+    if request.method == 'POST':
+        form = CustomerInfoForm(request.POST)
+        if form.is_valid():
+            event = form.save(commit=False)
+            event.creator = request.user
+            form.save
+            return HttpResponseRedirect(reverse('success'))
+        else:
+            print("ERROR : ", form.errors)
     context = {
         'items': items,
         'basket': basket,
@@ -167,7 +169,6 @@ def NewsletterSignupView(request):
 
 # Stripe checkout
 stripe.api_key = settings.STRIPE_SECRET_KEY
-
 
 
 def successView(request):

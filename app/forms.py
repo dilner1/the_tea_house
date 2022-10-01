@@ -26,7 +26,6 @@ class CustomerInfoForm(ModelForm):
     class Meta:
         model = CustomerInfo
         fields = [
-            'user',
             'company',
             'street_address2',
             'town_or_city',
