@@ -118,7 +118,10 @@ def updateBasket(request):
 
 
 @login_required(login_url='/accounts/login/')
-def checkout(request):
+def checkout(request, *args, **kwargs):
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    stripe_secret_key = settings.STRIPE_SECRET_KEY
+
     customer = request.user
     form = CustomerInfoForm()
     basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
@@ -131,7 +134,22 @@ def checkout(request):
             event = form.save(commit=False)
             event.creator = request.user
             form.save
-            return HttpResponseRedirect(reverse('success'))
+            price = BasketItems.objects.get(pk=pk)
+
+            checkout_session = stripe.checkout.Session.create(
+            payment_method_types=['card'],
+            line_items=[
+                {
+                    'price': price.order,
+                    'quantity': 1,
+                },
+            ],
+            mode='payment',
+            success_url=YOUR_DOMAIN + '/success/',
+            cancel_url=YOUR_DOMAIN + '/cancel/',
+        )
+            return redirect(checkout_session.url)
+            # return HttpResponseRedirect(reverse('success'))
         else:
             print("ERROR : ", form.errors)
     context = {
@@ -139,7 +157,7 @@ def checkout(request):
         'basket': basket,
         'form': form,
         'allBasketItems': allBasketItems,
-        'stripe_public_key': 'pk_test_51Kz0ymB7IvVSIDePssplUQzJPXoeo8xVVHgtkffF1g0SCe2ZL8Eu9bajY3FOl9gKRFyJ1HSwEZufxdL1lo7YFjD600ZWt0Dnzq',
+        'stripe_public_key': stripe_secret_key,
         'client_secret': 'test client secret',
         }
     return render(request, 'app/checkout.html', context)
@@ -162,17 +180,8 @@ def NewsletterSignupView(request):
     return render(request, "app/my_account.html", context)
 
 
-
-
-
-
-
-# Stripe checkout
-stripe.api_key = settings.STRIPE_SECRET_KEY
-
-
 def successView(request):
-    context={}
+    context = {}
     return render(request, "app/success.html/", context)
 
 def cancelView(request):
