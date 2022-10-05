@@ -122,19 +122,30 @@ def checkout(request, *args, **kwargs):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
+    pk = request.GET.get('pk')
     customer = request.user
     form = CustomerInfoForm()
     basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
     items = basket.basketitems_set.all()
     allBasketItems = basket.get_basket_items
 
+# BasketItems
+#     item = models.ForeignKey(Product, on_delete=models.SET_NULL, blank=True, null=True)
+#     order = models.ForeignKey(Basket, on_delete=models.SET_NULL, blank=True, null=True)
+#     quantity = models.IntegerField(default=0, null=True, blank=True)
+#     added_date = models.DateTimeField(auto_now_add=True, max_length=150)
+
+#     @property
+#     def add_total(self):
+#         total = self.item.price * self.quantity
+#         return total
+
     if request.method == 'POST':
         form = CustomerInfoForm(request.POST)
         if form.is_valid():
             event = form.save(commit=False)
             event.creator = request.user
-            form.save
-            price = BasketItems.objects.get(pk=pk)
+            price = BasketItems.get(pk=pk)
 
             checkout_session = stripe.checkout.Session.create(
             payment_method_types=['card'],
