@@ -1,4 +1,4 @@
-from app.models import Basket
+from basket.models import Basket
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import Categories, Product
