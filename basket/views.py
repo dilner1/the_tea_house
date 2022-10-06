@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from .models import Basket
+from products.models import Product
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+
+import json
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
