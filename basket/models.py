@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Basket(models.Model):
@@ -6,6 +7,9 @@ class Basket(models.Model):
     order_number = models.CharField(max_length=30, null=False)
     order_date = models.DateTimeField(auto_now_add=True,)
     completedOrder = models.BooleanField(default=False, null=True, blank=False)
+
+    class Meta:
+        db_table = 'app_basket'
 
     def __str__(self):
         return str(self.id)

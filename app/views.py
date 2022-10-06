@@ -8,6 +8,7 @@ from django.urls import reverse
 import stripe
 import json
 from .models import BasketItems, CustomerInfo, NewsletterSignup
+from basket.models import Basket
 from .forms import NewsletterSignupForm, CustomerInfoForm
 
 def index(request):

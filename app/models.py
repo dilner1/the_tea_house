@@ -4,7 +4,7 @@ from django_countries.fields import CountryField
 from django.conf import settings
 
 from products.models import Product
-from basketmodels import Basket
+from basket.models import Basket
 
 class BasketItems(models.Model):
     item = models.ForeignKey(Product, on_delete=models.SET_NULL, blank=True, null=True)
