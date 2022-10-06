@@ -5,9 +5,9 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='home'),
-    path('tea-store/', views.teaStore, name='tea-store'),
-    path('pots-and-sets-store/', views.potsStore, name='pots-and-sets-store'),
-    path('teaware-store/', views.teawareStore, name='teaware-store'),
+    path('tea-store/', include('products.urls')),
+    # path('pots-and-sets-store/', views.potsStore, name='pots-and-sets-store'),
+    # path('teaware-store/', views.teawareStore, name='teaware-store'),
     path('basket/', views.basket, name='basket'),
     path('checkout/', views.checkout, name='checkout'),
     path('update-basket/', views.updateBasket, name='update-basket'),

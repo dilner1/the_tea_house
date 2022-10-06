@@ -3,7 +3,6 @@ from django.views.generic import View, TemplateView
 from django.http import JsonResponse, HttpResponseRedirect
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
-
 from django.urls import reverse
 
 import stripe
@@ -30,50 +29,50 @@ def index(request):
         }
     return render(request, 'app/index.html', context) 
 
-@login_required(login_url='/accounts/login/')
-def teaStore(request):
-    customer = request.user
-    basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
-    items = basket.basketitems_set.all()
-    allBasketItems = basket.get_basket_items
+# @login_required(login_url='/accounts/login/')
+# def teaStore(request):
+#     customer = request.user
+#     basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
+#     items = basket.basketitems_set.all()
+#     allBasketItems = basket.get_basket_items
 
-    products = Product.objects.all()
-    context = {
-        'products':products,
-        'allBasketItems':allBasketItems
-        }
+#     products = Product.objects.all()
+#     context = {
+#         'products':products,
+#         'allBasketItems':allBasketItems
+#         }
 
-    return render(request, 'app/tea-store.html', context)
+#     return render(request, 'app/tea-store.html', context)
 
-@login_required(login_url='/accounts/login/')
-def potsStore(request):
+# @login_required(login_url='/accounts/login/')
+# def potsStore(request):
 
-    customer = request.user
-    basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
-    items = basket.basketitems_set.all()
-    allBasketItems = basket.get_basket_items
+#     customer = request.user
+#     basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
+#     items = basket.basketitems_set.all()
+#     allBasketItems = basket.get_basket_items
 
-    products = Product.objects.all()
-    context = {
-        'products':products,
-        'allBasketItems':allBasketItems
-        }
+#     products = Product.objects.all()
+#     context = {
+#         'products':products,
+#         'allBasketItems':allBasketItems
+#         }
 
-    return render(request, 'app/pots-and-sets-store.html', context)
+#     return render(request, 'app/pots-and-sets-store.html', context)
 
-@login_required(login_url='/accounts/login/')
-def teawareStore(request):
-    customer = request.user
-    basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
-    items = basket.basketitems_set.all()
-    allBasketItems = basket.get_basket_items
+# @login_required(login_url='/accounts/login/')
+# def teawareStore(request):
+#     customer = request.user
+#     basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
+#     items = basket.basketitems_set.all()
+#     allBasketItems = basket.get_basket_items
 
-    products = Product.objects.all()
-    context = {
-        'products':products,
-        'allBasketItems':allBasketItems
-        }
-    return render(request, 'app/teaware-store.html', context)
+#     products = Product.objects.all()
+#     context = {
+#         'products':products,
+#         'allBasketItems':allBasketItems
+#         }
+#     return render(request, 'app/teaware-store.html', context)
 
 @login_required(login_url='/accounts/login/')
 def basket(request):

@@ -3,22 +3,24 @@ from django.contrib.auth.models import User
 from django_countries.fields import CountryField
 from django.conf import settings
 
-class Categories(models.Model):
-    category = models.CharField(max_length=30)
+from products.models import Product
 
-    def __str__(self):
-        return self.category
+# class Categories(models.Model):
+#     category = models.CharField(max_length=30)
 
-class Product(models.Model):
-    name = models.CharField(max_length=50, null=True)
-    sku = models.CharField(max_length=254, null=True, blank=True)
-    price = models.FloatField()
-    info = models.TextField()
-    image = models.ImageField()
-    category = models.ForeignKey('Categories', null=True, blank=True, on_delete=models.SET_NULL)
+#     def __str__(self):
+#         return self.category
 
-    def __str__(self):
-        return self.name
+# class Product(models.Model):
+#     name = models.CharField(max_length=50, null=True)
+#     sku = models.CharField(max_length=254, null=True, blank=True)
+#     price = models.FloatField()
+#     info = models.TextField()
+#     image = models.ImageField()
+#     category = models.ForeignKey('Categories', null=True, blank=True, on_delete=models.SET_NULL)
+
+#     def __str__(self):
+#         return self.name
 
 class Basket(models.Model):
     customer = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
