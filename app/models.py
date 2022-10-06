@@ -4,44 +4,7 @@ from django_countries.fields import CountryField
 from django.conf import settings
 
 from products.models import Product
-
-# class Categories(models.Model):
-#     category = models.CharField(max_length=30)
-
-#     def __str__(self):
-#         return self.category
-
-# class Product(models.Model):
-#     name = models.CharField(max_length=50, null=True)
-#     sku = models.CharField(max_length=254, null=True, blank=True)
-#     price = models.FloatField()
-#     info = models.TextField()
-#     image = models.ImageField()
-#     category = models.ForeignKey('Categories', null=True, blank=True, on_delete=models.SET_NULL)
-
-#     def __str__(self):
-#         return self.name
-
-class Basket(models.Model):
-    customer = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
-    order_number = models.CharField(max_length=30, null=False)
-    order_date = models.DateTimeField(auto_now_add=True,)
-    completedOrder = models.BooleanField(default=False, null=True, blank=False)
-
-    def __str__(self):
-        return str(self.id)
-
-    @property
-    def get_basket_items(self):
-        basketitems = self.basketitems_set.all()
-        total = sum([item.quantity for item in basketitems])
-        return total
-
-    @property
-    def get_basket_total(self):
-        basketitems = self.basketitems_set.all()
-        total = sum([item.add_total for item in basketitems])
-        return total
+from basketmodels import Basket
 
 class BasketItems(models.Model):
     item = models.ForeignKey(Product, on_delete=models.SET_NULL, blank=True, null=True)
