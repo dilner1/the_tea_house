@@ -22,13 +22,15 @@ def basket(request):
     return render(request, 'app/basket.html', context)
 
 def updateBasket(request):
+
     data = json.loads(request.body)
+    # THIS IS THE OFFENDING LINE
+
     itemId = data['itemId']
     action = data['action']
 
     print('Item Id:', itemId)
     print('Action:', action)
-    
 
     customer = request.user
     item = Product.objects.get(id=itemId)
