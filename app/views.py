@@ -7,8 +7,9 @@ from django.urls import reverse
 
 import stripe
 import json
-from .models import BasketItems, CustomerInfo, NewsletterSignup
+from .models import NewsletterSignup
 from basket.models import Basket
+from checkout.models import BasketItems, CustomerInfo
 from .forms import NewsletterSignupForm, CustomerInfoForm
 
 def index(request):
@@ -31,67 +32,67 @@ def index(request):
     return render(request, 'app/index.html', context) 
 
 
-@login_required(login_url='/accounts/login/')
-def checkout(request, *args, **kwargs):
-    print(request.method)
-    stripe_public_key = settings.STRIPE_PUBLIC_KEY
-    stripe_secret_key = settings.STRIPE_SECRET_KEY
-    stripe.api_key = stripe_secret_key
+# @login_required(login_url='/accounts/login/')
+# def checkout(request, *args, **kwargs):
+#     print(request.method)
+#     stripe_public_key = settings.STRIPE_PUBLIC_KEY
+#     stripe_secret_key = settings.STRIPE_SECRET_KEY
+#     stripe.api_key = stripe_secret_key
 
-    # pk = request.GET.get('pk')
-    customer = request.user
-    form = CustomerInfoForm()
-    basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
-    items = basket.basketitems_set.all()
-    allBasketItems = basket.get_basket_items
+#     # pk = request.GET.get('pk')
+#     customer = request.user
+#     form = CustomerInfoForm()
+#     basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
+#     items = basket.basketitems_set.all()
+#     allBasketItems = basket.get_basket_items
 
-# BasketItems
-#     item = models.ForeignKey(Product, on_delete=models.SET_NULL, blank=True, null=True)
-#     order = models.ForeignKey(Basket, on_delete=models.SET_NULL, blank=True, null=True)
-#     quantity = models.IntegerField(default=0, null=True, blank=True)
-#     added_date = models.DateTimeField(auto_now_add=True, max_length=150)
+# # BasketItems
+# #     item = models.ForeignKey(Product, on_delete=models.SET_NULL, blank=True, null=True)
+# #     order = models.ForeignKey(Basket, on_delete=models.SET_NULL, blank=True, null=True)
+# #     quantity = models.IntegerField(default=0, null=True, blank=True)
+# #     added_date = models.DateTimeField(auto_now_add=True, max_length=150)
 
-#     @property
-#     def add_total(self):
-#         total = self.item.price * self.quantity
-#         return total
+# #     @property
+# #     def add_total(self):
+# #         total = self.item.price * self.quantity
+# #         return total
 
-    if request.method == 'POST':
-        form = CustomerInfoForm(request.POST)
-        if form.is_valid():
-            event = form.save(commit=False)
-            event.creator = request.user
-            event = form.save()
+#     if request.method == 'POST':
+#         form = CustomerInfoForm(request.POST)
+#         if form.is_valid():
+#             event = form.save(commit=False)
+#             event.creator = request.user
+#             event = form.save()
 
-            price = 2
+#             price = 2
 
-            checkout_session = stripe.checkout.Session.create(
-            payment_method_types=['card'],
-            line_items=[
-                {
-                    'price': price,
-                    'quantity': 1,
-                },
-            ],
-            mode='payment',
-            success_url='/success/',
-            cancel_url='/cancel/',
-        )
-            return redirect(checkout_session.url)
-            # return HttpResponseRedirect(reverse('success'))
-        else:
-            print("ERROR : ", form.errors)
-    context = {
-        'items': items,
-        'basket': basket,
-        'form': form,
-        'allBasketItems': allBasketItems,
-        'stripe_public_key': stripe_secret_key,
-        'client_secret': 'test client secret',
-        }
-    return render(request, 'app/checkout.html', context)
+#             checkout_session = stripe.checkout.Session.create(
+#             payment_method_types=['card'],
+#             line_items=[
+#                 {
+#                     'price': price,
+#                     'quantity': 1,
+#                 },
+#             ],
+#             mode='payment',
+#             success_url='/success/',
+#             cancel_url='/cancel/',
+#         )
+#             return redirect(checkout_session.url)
+#             # return HttpResponseRedirect(reverse('success'))
+#         else:
+#             print("ERROR : ", form.errors)
+#     context = {
+#         'items': items,
+#         'basket': basket,
+#         'form': form,
+#         'allBasketItems': allBasketItems,
+#         'stripe_public_key': stripe_secret_key,
+#         'client_secret': 'test client secret',
+#         }
+#     return render(request, 'app/checkout.html', context)
 
-def NewsletterSignupView(request):
+# def NewsletterSignupView(request):
 
     form = NewsletterSignupForm(request.POST or None)
     print('checking email address')
@@ -109,13 +110,13 @@ def NewsletterSignupView(request):
     return render(request, "app/my_account.html", context)
 
 
-def successView(request):
-    context = {}
-    return render(request, "app/success.html/", context)
+# def successView(request):
+#     context = {}
+#     return render(request, "app/success.html/", context)
 
-def cancelView(request):
-    context={}
-    return render(request, "app/cancel.html/", context)
+# def cancelView(request):
+#     context={}
+#     return render(request, "app/cancel.html/", context)
 
 def handler404View(request, exception):
     return render(request, '404.html', status=404)

@@ -1,7 +1,7 @@
 from allauth.account.forms import SignupForm
 from django import forms
-from django.forms import ModelForm
-from .models import NewsletterSignup, CustomerInfo
+# from django.forms import ModelForm
+from .models import NewsletterSignup
 
 class CustomSignupForm(SignupForm):
     first_name = forms.CharField(max_length=30, label='First Name')
@@ -21,17 +21,3 @@ class NewsletterSignupForm(forms.ModelForm):
             email = self.cleaned_data.get('email')
 
             return email
-
-class CustomerInfoForm(ModelForm):
-    class Meta:
-        model = CustomerInfo
-        fields = [
-            'company',
-            'street_address2',
-            'town_or_city',
-            'county',
-            'country',
-            'postcode',
-            'phone_number',
-            'info'
-            ]

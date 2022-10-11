@@ -24,7 +24,7 @@ def basket(request):
 def updateBasket(request):
 
     data = json.loads(request.body)
-    # THIS IS THE OFFENDING LINE
+    # THIS IS THE OFFENDING LINE 
 
     itemId = data['itemId']
     action = data['action']
