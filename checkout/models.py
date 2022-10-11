@@ -12,7 +12,7 @@ class BasketItems(models.Model):
     added_date = models.DateTimeField(auto_now_add=True, max_length=150)
 
     class Meta:
-        db_table = 'app_basket_items'
+        db_table = 'app_basketItems'
 
     @property
     def add_total(self):
@@ -32,7 +32,7 @@ class CustomerInfo(models.Model):
     info = models.TextField(null=True, blank=True)
 
     class Meta:
-        db_table = 'app_customer_info'
+        db_table = 'app_customerInfo'
 
     def __str__(self):
         return str(self.postcode)

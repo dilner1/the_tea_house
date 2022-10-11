@@ -10,7 +10,7 @@ import json
 from .models import NewsletterSignup
 from basket.models import Basket
 from checkout.models import BasketItems, CustomerInfo
-from .forms import NewsletterSignupForm, CustomerInfoForm
+from .forms import NewsletterSignupForm
 
 def index(request):
     """ Loads index page """
@@ -92,7 +92,7 @@ def index(request):
 #         }
 #     return render(request, 'app/checkout.html', context)
 
-# def NewsletterSignupView(request):
+def NewsletterSignupView(request):
 
     form = NewsletterSignupForm(request.POST or None)
     print('checking email address')
@@ -110,13 +110,13 @@ def index(request):
     return render(request, "app/my_account.html", context)
 
 
-# def successView(request):
-#     context = {}
-#     return render(request, "app/success.html/", context)
+def successView(request):
+    context = {}
+    return render(request, "app/success.html/", context)
 
-# def cancelView(request):
-#     context={}
-#     return render(request, "app/cancel.html/", context)
+def cancelView(request):
+    context={}
+    return render(request, "app/cancel.html/", context)
 
 def handler404View(request, exception):
     return render(request, '404.html', status=404)

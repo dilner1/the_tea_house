@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import NewsletterSignup, CustomerInfo
+from .models import CustomerInfo
 
 class CustomerInfoForm(ModelForm):
     class Meta:
