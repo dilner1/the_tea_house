@@ -187,7 +187,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-dilner1-theteahouse-gylthi4t20e.ws-eu70.gitpod.io'] 
+CSRF_TRUSTED_ORIGINS = ['https://8000-dilner1-theteahouse-gylthi4t20e.ws-eu71.gitpod.io'] 
 
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'

@@ -2,16 +2,18 @@ from django.shortcuts import render
 # from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from django.conf import settings
 
 import stripe
 from .models import BasketItems, CustomerInfo
 from basket.models import Basket
+from products.models import Product
 from .forms import CustomerInfoForm
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
 def checkout(request, *args, **kwargs):
-    print(request.method)
+    
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
     stripe.api_key = stripe_secret_key
@@ -22,8 +24,8 @@ def checkout(request, *args, **kwargs):
     basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
     items = basket.basketitems_set.all()
     allBasketItems = basket.get_basket_items
-
-
+    price = Product.objects.get(id=id)
+    print(price)
 
     if request.method == 'POST':
         form = CustomerInfoForm(request.POST)
@@ -32,7 +34,6 @@ def checkout(request, *args, **kwargs):
             event.creator = request.user
             event = form.save()
 
-            price = 2
 
             checkout_session = stripe.checkout.Session.create(
             payment_method_types=['card'],

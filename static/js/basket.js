@@ -18,9 +18,7 @@ for (i = 0; i < add_button.length; i++) {
 // function creates a promise, sending javascript data to the backend
 function updateBasketItems(itemId, action){
   console.log('User is authenticated, adding to basket...')
-
   let url = '/update-basket/'
-
   fetch(url, {
     method:'POST',
     headers:{
