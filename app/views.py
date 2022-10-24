@@ -109,13 +109,13 @@ def NewsletterSignupView(request):
     return render(request, "app/my_account.html", context)
 
 
-def successView(request):
-    context = {}
-    return render(request, "app/success.html/", context)
+# def successView(request):
+#     context = {}
+#     return render(request, "app/success.html/", context)
 
-def cancelView(request):
-    context={}
-    return render(request, "app/cancel.html/", context)
+# def cancelView(request):
+#     context={}
+#     return render(request, "app/cancel.html/", context)
 
 def handler404View(request, exception):
     return render(request, '404.html', status=404)

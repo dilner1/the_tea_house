@@ -6,6 +6,7 @@ class CustomerInfoForm(ModelForm):
     class Meta:
         model = CustomerInfo
         fields = [
+            'user',
             'company',
             'street_address2',
             'town_or_city',
@@ -15,3 +16,4 @@ class CustomerInfoForm(ModelForm):
             'phone_number',
             'info'
             ]
+        exclude = ('user',)

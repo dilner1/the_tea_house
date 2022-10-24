@@ -8,8 +8,6 @@ urlpatterns = [
     path('tea-store/', include('products.urls')),
     path('basket/', include('basket.urls')),
     path('checkout/', include('checkout.urls')),
-    path('success/', views.successView, name='success'),
-    path('cancel/', views.cancelView, name='cancel'),
     path('my-account/', views.NewsletterSignupView, name='my-account'),
     ]
 

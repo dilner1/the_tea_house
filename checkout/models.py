@@ -35,4 +35,4 @@ class CustomerInfo(models.Model):
         db_table = 'app_customerInfo'
 
     def __str__(self):
-        return str(self.postcode)
+        return str(self.user)

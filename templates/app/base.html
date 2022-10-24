@@ -43,7 +43,7 @@
     let user = '{{request.user}}'
 
     // function creates CSRF token for basket.js
-    function getCookie(name) {
+    function getToken(name) {
       let cookieValue = null;
       if (document.cookie && document.cookie !== '') {
         const cookies = document.cookie.split(';');
@@ -58,7 +58,7 @@
       }
       return cookieValue;
     }
-    const csrftoken = getCookie('csrftoken');
+    const csrftoken = getToken('csrftoken');
   </script>
   {% endblock %}
 

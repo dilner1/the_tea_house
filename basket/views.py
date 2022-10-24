@@ -23,7 +23,7 @@ def basket(request):
 
 def updateBasket(request):
 
-    data = json.loads(request.body)
+    data = json.loads(request.data)
     # THIS IS THE OFFENDING LINE 
 
     itemId = data['itemId']
