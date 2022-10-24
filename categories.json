@@ -1,5 +1,5 @@
 [
-    {"model": "products.category", "fields": {"category": "Tea"}},
-    {"model": "products.category", "fields": {"category": "Pots and Sets"}},
-    {"model": "products.category", "fields": {"category": "Teaware"}},
+    {"model": "products.Category", "pk": 1, "fields": {"category": "Tea"}},
+    {"model": "products.Category", "pk": 2, "fields": {"category": "Pots and Sets"}},
+    {"model": "products.Category", "pk": 3, "fields": {"category": "Teaware"}}
 ]
