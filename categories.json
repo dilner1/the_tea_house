@@ -1,5 +1,0 @@
-[
-    {"model": "products.Category", "pk": 1, "fields": {"category": "Tea"}},
-    {"model": "products.Category", "pk": 2, "fields": {"category": "Pots and Sets"}},
-    {"model": "products.Category", "pk": 3, "fields": {"category": "Teaware"}}
-]

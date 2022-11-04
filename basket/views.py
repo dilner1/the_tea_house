@@ -13,18 +13,20 @@ def basket(request):
     basket, created = Basket.objects.get_or_create(customer=customer, completedOrder=False)
     items = basket.basketitems_set.all()
     allBasketItems = basket.get_basket_items
-    
+    orderNumber = 6
+
     context = {
         'items':items,
         'basket':basket,
-        'allBasketItems':allBasketItems
+        'allBasketItems':allBasketItems,
+        'orderNumber':orderNumber
         }
     return render(request, 'app/basket.html', context)
 
 def updateBasket(request):
 
+    print(request)
     data = json.loads(request.data)
-    # THIS IS THE OFFENDING LINE 
 
     itemId = data['itemId']
     action = data['action']

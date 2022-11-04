@@ -19,7 +19,8 @@ for (i = 0; i < add_button.length; i++) {
 function updateBasketItems(itemId, action){
   console.log('User is authenticated, adding to basket...')
 
-  let url = '/update-basket/'
+  // url changes depending on store
+  let url = '/basket/update-basket/'
   fetch(url, {
     method:'POST',
     headers:{

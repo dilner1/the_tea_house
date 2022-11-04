@@ -1,0 +1,13 @@
+[
+    {
+        "model": "products.product",
+        "pk": 4,
+        "fields": {
+            "name": "Hunan Jasemine Tea", 
+            "sku": "hunan-jasmine-tea", 
+            "price": 15, 
+            "info": "A very fragrant tea from Hunan province, the local people have been growing this jsamine tea for generations. This is perfect for relaxing in the afternoon with it's subtle flavours and lower caffeine content。", 
+            "image": "https://res.cloudinary.com/ddxxrzq7g/image/upload/v1656373211/pexels-valeria-boltneva-11213971_fmxukb.jpg", 
+            "category": "1"
+    }}
+]

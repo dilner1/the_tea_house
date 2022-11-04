@@ -87,10 +87,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'the_tea_house.wsgi.application'
 
-if development:
-    ALLOWED_HOSTS = ['localhost', 'the-tea-house-p5.herokuapp.com']
-else:
-    ALLOWED_HOSTS = [os.environ.get('https://the-tea-house-p5.herokuapp.com/')]
+# if development:
+#     ALLOWED_HOSTS = ['localhost', 'the-tea-house-p5.herokuapp.com']
+# else:
+#     ALLOWED_HOSTS = [os.environ.get('https://the-tea-house-p5.herokuapp.com/')]
+ALLOWED_HOSTS = ['localhost', 'the-tea-house-p5.herokuapp.com', '.loca.lt']
 
 
 AUTHENTICATION_BACKENDS = [
@@ -186,7 +187,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-dilner1-theteahouse-gylthi4t20e.ws-eu72.gitpod.io'] 
+CSRF_TRUSTED_ORIGINS = ['https://8000-dilner1-theteahouse-gylthi4t20e.ws-eu73.gitpod.io', 'http://*.loca.lt', 'https://*.loca.lt'] 
 
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'

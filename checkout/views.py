@@ -24,14 +24,8 @@ def checkout(request):
     items = basket.basketitems_set.all()
     allBasketItems = basket.get_basket_items
 
-
-
-    # data = json.loads(request.body)
-    # itemId = data['itemId']
-    # item = Product.objects.get(id=itemId)
-
-
-    baseURL = 'https://8000-dilner1-theteahouse-gylthi4t20e.ws-eu72.gitpod.io.loca.lt/'
+    # baseURL = 'https://the-tea-house.loca.lt/'
+    # successUrl = baseURL + '/success/'
 
     if request.method == 'POST':
         form = CustomerInfoForm(request.POST)
@@ -52,7 +46,10 @@ def checkout(request):
                 'quantity': 1,
                 }],
             mode='payment',
-            success_url= '/success/',
+            # success_url= successUrl,
+            # cancel_url= baseURL + '/cancel/',
+
+            success_url= 'https://8000-dilner1-theteahouse-gylthi4t20e.ws-eu73.gitpod.io/checkout/success/',
             cancel_url= '/cancel/',
         )
             context = {
@@ -64,7 +61,7 @@ def checkout(request):
                 'client_secret': 'test client secret',
         }
 
-            return render(request, 'app/checkout.html', context)
+            return render(request, 'app/success.html', context)
 
         else:
             print("ERROR : ", form.errors)
